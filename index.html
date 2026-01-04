@@ -6,7 +6,7 @@
 
   <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-  <meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes originaux, lus à voix haute, pour éveiller l’esprit et apaiser le cœur." />
+  <meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes apaisants, lus à voix haute, pour éveiller l’esprit et calmer le cœur." />
   <meta name="theme-color" content="#0E1A1F" />
 
   <style>
@@ -21,34 +21,41 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(circle at top, #1F4E5F, #0E1A1F 70%);
+      background: radial-gradient(circle at top, var(--bleu-canard), var(--nuit) 70%);
       color: var(--etoile);
       line-height: 1.7;
     }
 
     header {
-      padding: 60px 24px 40px;
+      padding: 64px 24px 48px;
       text-align: center;
     }
 
     header img {
       width: 180px;
       max-width: 60%;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
       filter: drop-shadow(0 0 25px rgba(201,183,255,0.5));
     }
 
-    header h1 {
+    h1 {
       font-size: 42px;
       color: var(--lila);
       margin-bottom: 12px;
     }
 
-    header p {
-      font-size: 18px;
+    h2 {
+      font-size: 30px;
+      color: var(--lila);
+      margin-bottom: 24px;
+    }
+
+    p {
       color: var(--brume);
-      max-width: 620px;
-      margin: 0 auto;
+      font-size: 18px;
     }
 
     section {
@@ -57,36 +64,46 @@
       margin: 0 auto;
     }
 
-    h2 {
-      color: var(--lila);
-      margin-bottom: 24px;
-      font-size: 28px;
+    .citation {
+      font-style: italic;
+      font-size: 20px;
+      color: var(--etoile);
+      margin: 32px 0;
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    button {
+      background: linear-gradient(135deg, var(--lila), var(--bleu-canard));
+      border: none;
+      color: #0E1A1F;
+      padding: 12px 22px;
+      border-radius: 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 12px;
     }
 
     .box {
       background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    }
-
-    .citation {
-      font-style: italic;
-      color: var(--brume);
-      margin: 16px 0;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 24px;
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px;
+      padding: 48px 24px;
       font-size: 14px;
       color: var(--brume);
+    }
+
+    .lang {
+      margin-top: 32px;
+      font-size: 16px;
+      color: var(--brume);
+    }
+
+    .qr {
+      margin-top: 24px;
     }
   </style>
 </head>
@@ -99,62 +116,101 @@
   <p>
     Des mots pour te réveiller.<br>
     Des silences pour t’apaiser.<br>
-    Une application de citations et poèmes à écouter, lire et ressentir.
+    Une application de citations et de poèmes à recevoir chaque jour.
   </p>
 </header>
 
 <section>
   <h2>Pourquoi Aurore des Mots ?</h2>
 
-  <div class="features">
-    <div class="box">📖 Textes et citations quotidiennes</div>
-    <div class="box">🎧 Lecture vocale apaisante</div>
-    <div class="box">🌙 Un moment de calme chaque jour</div>
-    <div class="box">🌍 Version française & anglaise</div>
-  </div>
-</section>
+  <p class="citation" id="citation">
+    « Le silence n’est jamais vide, il est plein de réponses. »
+  </p>
 
-<section>
-  <h2>Extraits</h2>
-
-  <p class="citation">« Ce que tu cherches à l’extérieur murmure déjà en toi. »</p>
-  <p class="citation">« Le silence n’est jamais vide, il est plein de réponses. »</p>
-  <p class="citation">« Chaque matin est une seconde chance déguisée en habitude. »</p>
+  <button onclick="lireTexte(document.getElementById('citation').innerText)">
+    🎧 Écouter la voix
+  </button>
 </section>
 
 <section>
   <h2>Une expérience à ton rythme</h2>
 
-  <div class="features">
-    <div class="box">
-      <strong>🔓 Version gratuite</strong><br>
-      Un texte par jour<br>
-      Lecture vocale incluse<br>
-      Sans engagement
-    </div>
+  <div class="box">
+    <p>
+      🔓 <strong>Version gratuite</strong><br>
+      • Un texte inspirant par jour<br>
+      • Lecture vocale incluse<br>
+      • Sans engagement
+    </p>
+  </div>
 
-    <div class="box">
-      <strong>✨ Version premium</strong><br>
-      Accès illimité aux textes<br>
-      Voix exclusives & ambiances sonores<br>
-      Contenus bilingues FR / EN
-    </div>
+  <div class="box">
+    <p>
+      💎 <strong>Version premium</strong><br>
+      • Textes exclusifs et poèmes longs<br>
+      • Choix de la voix et du rythme<br>
+      • Notifications personnalisées<br>
+      • Accès hors ligne
+    </p>
   </div>
 </section>
 
 <section>
   <h2>Télécharger l’application</h2>
+
   <p>
-    Scanne le QR code pour accéder à l’application dès sa publication sur Google Play.
-    <br><br>
-    (Le lien sera activé prochainement)
+    L’application te permet de recevoir les textes directement sur ton téléphone,
+    même hors connexion, avec une expérience plus intime et immersive.
+  </p>
+
+  <div class="qr">
+    <p>📲 Scan ce QR code pour accéder à l’application :</p>
+    <img src="qr-app.png" alt="QR code application" width="180" />
+  </div>
+</section>
+
+<section>
+  <h2>English version</h2>
+
+  <p class="lang">
+    <strong>Aurore of Words</strong><br>
+    Gentle words to awaken your soul.<br>
+    Daily quotes and poems, softly read aloud.
   </p>
 </section>
 
 <footer>
   © Aurore des Mots — Tous droits réservés<br>
-  Une application pour ralentir, ressentir et se reconnecter.
+  Créé avec douceur et intention ✨
 </footer>
+
+<script>
+  let selectedVoice = null;
+
+  function loadVoices() {
+    const voices = speechSynthesis.getVoices();
+
+    selectedVoice =
+      voices.find(v => v.name.includes("Google") && v.lang.startsWith("fr")) ||
+      voices.find(v => v.lang.startsWith("fr")) ||
+      voices[0];
+  }
+
+  speechSynthesis.onvoiceschanged = loadVoices;
+
+  function lireTexte(texte) {
+    if (!selectedVoice) loadVoices();
+
+    const utterance = new SpeechSynthesisUtterance(texte);
+    utterance.voice = selectedVoice;
+    utterance.rate = 0.85;
+    utterance.pitch = 1.1;
+    utterance.volume = 1;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+  }
+</script>
 
 </body>
 </html>
