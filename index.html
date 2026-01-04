@@ -56,6 +56,11 @@
       padding: 56px 24px;
     }
 
+    h2 {
+      color: var(--lila);
+      margin-bottom: 24px;
+    }
+
     .type {
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -81,6 +86,20 @@
       font-size: 16px;
       cursor: pointer;
       margin: 8px;
+    }
+
+    .apports {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .apport {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 24px;
+      color: var(--brume);
     }
 
     footer {
@@ -113,11 +132,41 @@
 </section>
 
 <section>
-  <h2 style="color: var(--lila);">Pourquoi l’application ?</h2>
+  <h2>Ce que Aurore des Mots t’apporte au quotidien</h2>
+
+  <div class="apports">
+    <div class="apport">
+      🌅 <strong>Un point d’ancrage</strong><br>
+      Chaque jour commence ou se termine avec un mot juste,
+      sans pression, sans objectif à atteindre.
+    </div>
+
+    <div class="apport">
+      🧘 <strong>Un espace pour respirer</strong><br>
+      Quelques lignes pour ralentir,
+      faire une pause mentale et revenir à l’essentiel.
+    </div>
+
+    <div class="apport">
+      🎧 <strong>Une présence douce</strong><br>
+      La voix accompagne le texte,
+      comme si quelqu’un te lisait ce message, juste pour toi.
+    </div>
+
+    <div class="apport">
+      ✨ <strong>Un rituel simple</strong><br>
+      Pas besoin de temps, ni d’effort.
+      Tu ouvres, tu écoutes, tu ressens.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Pourquoi l’application ?</h2>
   <p style="color: var(--brume); max-width: 700px; margin: auto;">
     L’application permet de recevoir un texte quotidien personnalisé,
-    de sauvegarder tes favoris, d’écouter différentes voix
-    et de créer un véritable rituel de calme.
+    de sauvegarder tes favoris, de choisir ta voix
+    et de créer un véritable rituel de calme, jour après jour.
   </p>
 
   <div class="qr">
