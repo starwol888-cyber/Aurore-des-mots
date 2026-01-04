@@ -3,138 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-  <meta name="description" content="Aurore des Mots est une application mobile qui t’accompagne chaque jour avec des citations et des poèmes modernes, originaux et jamais répétés." />
-  <meta name="theme-color" content="#070B14" />
+  <meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes originaux, lus à voix haute, pour éveiller l’esprit et apaiser le cœur." />
+  <meta name="theme-color" content="#0E1A1F" />
 
   <style>
+    :root {
+      --nuit: #0E1A1F;
+      --bleu-canard: #1F4E5F;
+      --lila: #C9B7FF;
+      --etoile: #EAE6FF;
+      --brume: #9FB7C3;
+    }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(circle at top, #1A2A3A 0%, #070B14 60%);
-      color: #ECEAF3;
-      line-height: 1.8;
+      background: radial-gradient(circle at top, #1F4E5F, #0E1A1F 70%);
+      color: var(--etoile);
+      line-height: 1.7;
     }
 
     header {
-      padding: 90px 24px 70px;
+      padding: 60px 24px 40px;
       text-align: center;
     }
 
-    h1 {
-      font-size: 46px;
-      background: linear-gradient(135deg, #C6B7F2, #2FA4A9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 18px;
+    header img {
+      width: 180px;
+      max-width: 60%;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 25px rgba(201,183,255,0.5));
     }
 
-    .subtitle {
-      font-size: 19px;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      color: #AEB6C8;
+    header h1 {
+      font-size: 42px;
+      color: var(--lila);
+      margin-bottom: 12px;
     }
 
-    .cta {
-      display: inline-block;
-      padding: 15px 36px;
-      border-radius: 34px;
-      background: linear-gradient(135deg, #2FA4A9, #C6B7F2);
-      color: #070B14;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(47,164,169,0.35);
+    header p {
+      font-size: 18px;
+      color: var(--brume);
+      max-width: 620px;
+      margin: 0 auto;
     }
 
     section {
-      padding: 80px 24px;
-      max-width: 1000px;
+      padding: 64px 24px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     h2 {
-      font-size: 30px;
-      color: #C6B7F2;
+      font-size: 28px;
+      color: var(--lila);
       margin-bottom: 20px;
       text-align: center;
     }
 
+    .box {
+      background: rgba(255,255,255,0.04);
+      padding: 28px;
+      border-radius: 22px;
+      margin-bottom: 32px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    }
+
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
     }
 
     .feature {
-      background: linear-gradient(180deg, #101926, #0B1320);
-      padding: 30px;
-      border-radius: 26px;
-      box-shadow: 0 10px 30px rgba(47,164,169,0.12);
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 18px;
     }
 
-    .feature h3 {
-      margin-top: 0;
-      font-size: 18px;
-      color: #ECEAF3;
-    }
-
-    .feature p {
-      color: #AEB6C8;
-      font-size: 15px;
-    }
-
-    .poem {
-      font-style: italic;
-      font-size: 17px;
-      color: #ECEAF3;
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .audio-box {
-      text-align: center;
-      margin-top: 28px;
-    }
-
-    .listen-btn {
-      background: linear-gradient(135deg, #2FA4A9, #C6B7F2);
+    button {
+      background: var(--lila);
+      color: #0E1A1F;
       border: none;
-      color: #070B14;
-      padding: 12px 30px;
+      padding: 12px 22px;
       border-radius: 30px;
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(47,164,169,0.35);
+      margin-top: 12px;
     }
 
-    .download {
+    .qr {
       text-align: center;
     }
 
-    .download-box {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .download-box img {
+    .qr img {
       width: 180px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(47,164,169,0.35);
+      margin-top: 16px;
+      filter: drop-shadow(0 0 15px rgba(201,183,255,0.4));
     }
 
     footer {
       text-align: center;
-      padding: 50px 24px;
+      padding: 40px 20px;
       font-size: 14px;
-      color: #9A9AA0;
+      color: var(--brume);
+    }
+
+    footer span {
+      display: block;
+      margin-top: 8px;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -142,95 +124,98 @@
 <body>
 
 <header>
+  <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots – Hibou" />
   <h1>Aurore des Mots</h1>
-  <p class="subtitle">
-    Des mots pour te réveiller. Des silences pour t’apaiser.<br />
-    Une application de citations et de poèmes modernes,
-    pensés pour accompagner ton matin, ton après-midi et ta nuit.
+  <p>
+    Des mots pour te réveiller.<br>
+    Des silences pour t’apaiser.<br>
+    Une application de citations et de poèmes à vivre chaque jour.
   </p>
-
-  <a href="#telecharger" class="cta">Découvrir l’application</a>
 </header>
 
 <section>
-  <h2>Un rituel quotidien</h2>
+  <h2>Pourquoi Aurore des Mots ?</h2>
 
   <div class="features">
-    <div class="feature">
-      <h3>🌅 Le matin</h3>
-      <p>Des mots lumineux pour démarrer la journée avec clarté et douceur.</p>
-    </div>
-
-    <div class="feature">
-      <h3>🌤️ L’après-midi</h3>
-      <p>Des textes pour respirer, ralentir et garder le cap.</p>
-    </div>
-
-    <div class="feature">
-      <h3>🌙 Le soir</h3>
-      <p>Des poèmes introspectifs pour déposer la journée et s’apaiser.</p>
-    </div>
-  </div>
-
-  <p class="poem">
-    « La nuit ne te demande rien.<br />
-    Elle t’offre simplement un endroit<br />
-    où tu peux enfin te poser. »
-  </p>
-
-  <div class="audio-box">
-    <button class="listen-btn" onclick="speakText()">🔊 Écouter le texte</button>
+    <div class="feature">📖 Textes uniques, modernes et jamais répétés</div>
+    <div class="feature">🎧 Lecture vocale douce, par la voix de ton téléphone</div>
+    <div class="feature">🌙 Un rituel quotidien, simple et apaisant</div>
+    <div class="feature">🌍 Disponible en français et en anglais</div>
   </div>
 </section>
 
-<section id="telecharger" class="download">
+<section>
+  <h2>Une expérience à ton rythme</h2>
+
+  <div class="box">
+    <p>
+      <strong>🔓 Version gratuite</strong><br>
+      Un texte par jour, choisi avec soin.<br>
+      Lecture vocale incluse.<br>
+      Sans engagement.
+    </p>
+
+    <p style="margin-top:24px;">
+      <strong>✨ Version Premium</strong><br>
+      Plusieurs textes par jour.<br>
+      Accès aux archives.<br>
+      Voix premium plus apaisantes.<br>
+      Contenus exclusifs et mode hors-ligne.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Écouter un texte</h2>
+
+  <div class="box">
+    <p id="texte">
+      « Chaque matin est une porte discrète.
+      Il suffit d’un mot pour l’ouvrir,
+      et d’un souffle pour entrer. »
+    </p>
+    <button onclick="lireTexte()">🔊 Écouter</button>
+  </div>
+</section>
+
+<section>
   <h2>Télécharger l’application</h2>
 
-  <div class="download-box">
+  <div class="box qr">
+    <p>
+      L’application sera bientôt disponible sur Google Play.<br>
+      Scanne le QR code pour être redirigé dès sa sortie.
+    </p>
     <img src="qr-app.png" alt="QR code Aurore des Mots">
+  </div>
+</section>
 
-    <div>
-      <p class="subtitle">
-        Scanne le QR code ou clique ci-dessous pour télécharger l’application.
-      </p>
+<section>
+  <h2>English version</h2>
 
-      <a class="cta" href="https://play.google.com/store/apps/details?id=TON.APP.ID" target="_blank">
-        Télécharger sur Google Play
-      </a>
-
-      <p style="font-size:14px; opacity:0.7; margin-top:14px;">
-        Version iOS disponible prochainement ✨
-      </p>
-    </div>
+  <div class="box">
+    <p>
+      <strong>Aurora of Words</strong><br>
+      A daily moment of calm and inspiration.<br>
+      Modern quotes and poems, read aloud,<br>
+      designed to awaken and soothe.
+    </p>
   </div>
 </section>
 
 <footer>
-  © 2026 Aurore des Mots — Tous droits réservés
+  © 2026 — Aurore des Mots
+  <span>Un projet poétique et vivant</span>
 </footer>
 
 <script>
-  function speakText() {
-    const text = document.querySelector('.poem')?.innerText;
-    if (!text || !window.speechSynthesis) return;
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    const hour = new Date().getHours();
-
-    if (hour < 12) {
-      utterance.rate = 1;
-      utterance.pitch = 1.1;
-    } else if (hour < 18) {
-      utterance.rate = 0.9;
-      utterance.pitch = 1;
-    } else {
-      utterance.rate = 0.75;
-      utterance.pitch = 0.85;
-    }
-
-    utterance.lang = 'fr-FR';
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
+  function lireTexte() {
+    const texte = document.getElementById("texte").innerText;
+    const voix = new SpeechSynthesisUtterance(texte);
+    voix.lang = "fr-FR";
+    voix.rate = 0.9;
+    voix.pitch = 1;
+    speechSynthesis.speak(voix);
   }
 </script>
 
