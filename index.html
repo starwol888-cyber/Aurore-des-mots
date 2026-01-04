@@ -27,20 +27,7 @@ body{
   overflow-x:hidden;
 }
 
-/* 🌙 LUNE */
-.moon{
-  position:fixed;
-  top:40px;
-  right:50px;
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, #fff, #d6d0ff 60%, #b9b2ff);
-  box-shadow:0 0 60px rgba(201,183,255,.4);
-  z-index:1;
-}
-
-/* ⭐ CIEL */
+/* ⭐ CIEL ÉTOILÉ */
 canvas{
   position:fixed;
   inset:0;
@@ -48,27 +35,31 @@ canvas{
   pointer-events:none;
 }
 
-/* 🦉 HIBOU */
+/* 🦉 HIBOU – visible dès le chargement */
 .owl{
   position:fixed;
-  bottom:60px;
-  left:-120px;
-  width:90px;
-  height:90px;
-  background:radial-gradient(circle,var(--lila),var(--bleu-canard));
-  border-radius:50%;
-  box-shadow:0 0 30px rgba(201,183,255,.5);
-  z-index:3;
-  transition:transform 1s ease;
-}
-
-.owl.fly{
-  transform:translateX(calc(100vw + 200px)) translateY(-200px);
-}
-
-.owl.land{
+  bottom:40px;
   left:50%;
   transform:translateX(-50%);
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 35%, #EAE6FF, #C9B7FF 45%, #1F4E5F 80%);
+  box-shadow:0 0 35px rgba(201,183,255,.6);
+  z-index:3;
+  transition:transform 1.5s ease, bottom 1.5s ease;
+}
+
+/* Vol doux */
+.owl.fly{
+  transform:translate(-50%, -120px) scale(0.95);
+}
+
+/* Pose finale */
+.owl.land{
+  bottom:20px;
+  transform:translateX(-50%) scale(1);
 }
 
 /* STRUCTURE */
@@ -85,6 +76,7 @@ header{
 header h1{
   font-size:42px;
   color:var(--lila);
+  margin-bottom:12px;
 }
 
 header p{
@@ -99,22 +91,38 @@ section{
   padding:64px 24px;
 }
 
+h2{
+  color:var(--lila);
+  margin-bottom:16px;
+}
+
 .card{
   background:rgba(255,255,255,.05);
   border-radius:24px;
   padding:32px;
+  backdrop-filter:blur(10px);
+}
+
+#contenu{
+  white-space:pre-line;
+  font-size:20px;
+  margin:24px 0;
 }
 
 button{
   background:var(--lila);
+  color:#0E1A1F;
   border:none;
   border-radius:30px;
   padding:14px 26px;
+  margin:8px;
   font-weight:600;
   cursor:pointer;
-  margin:8px;
 }
 
+button:hover{opacity:.9}
+
+/* QR */
 .qr-box{
   border:2px dashed var(--lila);
   padding:24px;
@@ -128,23 +136,25 @@ button{
   height:160px;
   margin:0 auto;
   background:linear-gradient(45deg,var(--lila),var(--bleu-canard));
-  border-radius:12px;
+  border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#0E1A1F;
-  font-weight:bold;
+  font-weight:700;
 }
 
+/* FIN */
 .final{
   text-align:center;
   padding:120px 24px;
   color:var(--brume);
+  font-style:italic;
 }
 
 .points{
   font-size:40px;
-  animation:fade 5s infinite;
+  animation:fade 6s infinite;
 }
 
 @keyframes fade{
@@ -156,6 +166,7 @@ footer{
   text-align:center;
   padding:40px;
   font-size:14px;
+  color:var(--brume);
 }
 </style>
 </head>
@@ -163,38 +174,50 @@ footer{
 <body>
 
 <canvas id="stars"></canvas>
-<div class="moon"></div>
-<div class="owl" id="owl"></div>
+<div class="owl" id="owl" aria-hidden="true"></div>
 
 <header>
   <h1>Aurore des Mots</h1>
-  <p>Des mots pour te réveiller.<br>Des silences pour t’apaiser.</p>
+  <p>
+    Des mots pour te réveiller.<br>
+    Des silences pour t’apaiser.<br>
+    Une présence douce, chaque jour.
+  </p>
 </header>
 
 <section>
   <h2>✨ Texte du moment</h2>
   <div class="card">
-    <h3 id="type"></h3>
-    <div id="text"></div>
-    <button onclick="newText()">Nouveau texte</button>
-    <button onclick="read()">Écouter</button>
+    <h3 id="typeTexte"></h3>
+    <div id="contenu"></div>
+    <button onclick="nouveauTexte()">Nouveau texte</button>
+    <button onclick="lire()">Écouter</button>
   </div>
 </section>
 
 <section>
-  <h2>🌱 Ce que t’apporte l’application</h2>
+  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
   <div class="card">
     Aurore des Mots t’offre une pause consciente.
-    Un espace pour ralentir, respirer et te reconnecter à toi.
-    Chaque jour, les mots deviennent un refuge.
+    Un espace pour ralentir, respirer et te recentrer.
+    Les mots deviennent un refuge, jamais une injonction.
   </div>
 </section>
 
 <section>
-  <h2>💎 Gratuit & Premium</h2>
+  <h2>💎 Version gratuite & Premium</h2>
   <div class="card">
-    <strong>Gratuit</strong> : textes quotidiens, lecture vocale, français.<br><br>
-    <strong>Premium</strong> : poèmes exclusifs, voix au choix, FR/EN, sans publicité.
+    <p><strong>Gratuit</strong><br>
+      • Citations et poèmes quotidiens<br>
+      • Lecture vocale douce<br>
+      • Accès en français
+    </p>
+    <p><strong>Premium</strong><br>
+      • Poèmes exclusifs et plus longs<br>
+      • Choix de la voix<br>
+      • Français & Anglais<br>
+      • Sans publicité
+    </p>
   </div>
 </section>
 
@@ -219,62 +242,91 @@ footer{
 </footer>
 
 <script>
-/* ⭐ ÉTOILES + FILANTES */
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
+/* ⭐ ÉTOILES */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
 let w,h;
-function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
-resize();window.onresize=resize;
 
-let stars=[...Array(120)].map(()=>({
-  x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5,a:Math.random()
+function resize(){
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const stars = Array.from({length:120}, () => ({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  r:Math.random()*1.4+.3,
+  a:Math.random()
 }));
 
-function draw(){
+function drawStars(){
   ctx.clearRect(0,0,w,h);
   stars.forEach(s=>{
-    ctx.fillStyle=`rgba(234,230,255,${s.a})`;
-    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle = `rgba(234,230,255,${s.a})`;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
   });
-  requestAnimationFrame(draw);
+  requestAnimationFrame(drawStars);
 }
-draw();
+drawStars();
 
 /* 📜 TEXTES */
 const citations=[
-"Tu n’es pas en retard, tu es en chemin.",
-"La douceur est une force silencieuse.",
-"Aujourd’hui suffit."
+  "Tu n’es pas en retard, tu es en chemin.",
+  "La douceur est une force silencieuse.",
+  "Aujourd’hui suffit.",
+  "Même lentement, tu avances."
 ];
+
 const poemes=[
-"Respire.\nTu es déjà assez.",
-"Le silence\nest un refuge."
+  "Respire.\nLe monde n’attend rien de toi\nsinon ta présence.",
+  "Le silence\nn’est pas un vide\nmais un refuge.",
+  "Entre deux pensées\nil y a déjà la paix."
 ];
 
-const type=document.getElementById("type");
-const text=document.getElementById("text");
+const typeEl=document.getElementById("typeTexte");
+const contenuEl=document.getElementById("contenu");
 
-function newText(){
-  const c=Math.random()<.5;
-  type.textContent=c?"Citation":"Poème";
-  text.textContent=c?citations[Math.floor(Math.random()*citations.length)]
-                     :poemes[Math.floor(Math.random()*poemes.length)];
+function afficherTexte(){
+  const citation=Math.random()<0.5;
+  typeEl.textContent=citation?"Citation":"Poème";
+  contenuEl.textContent=citation
+    ?citations[Math.floor(Math.random()*citations.length)]
+    :poemes[Math.floor(Math.random()*poemes.length)];
 }
-newText();
+
+function nouveauTexte(){
+  speechSynthesis.cancel();
+  afficherTexte();
+}
 
 /* 🔊 VOIX */
-function read(){
-  const u=new SpeechSynthesisUtterance(text.textContent);
-  u.lang="fr-FR";u.rate=.85;u.pitch=1.05;
+function lire(){
+  const u=new SpeechSynthesisUtterance(contenuEl.textContent);
+  u.lang="fr-FR";
+  u.rate=0.85;
+  u.pitch=1.05;
+  speechSynthesis.cancel();
   speechSynthesis.speak(u);
 }
 
-/* 🦉 HIBOU */
+afficherTexte();
+
+/* 🦉 HIBOU – vol puis pose */
+const owl=document.getElementById("owl");
+
 window.addEventListener("scroll",()=>{
-  const owl=document.getElementById("owl");
-  if(scrollY>300) owl.classList.add("fly");
-  if(scrollY>document.body.scrollHeight-innerHeight-200)
-    owl.classList.add("land");
+  const y=window.scrollY;
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+
+  if(y>150){ owl.classList.add("fly"); }
+  else{ owl.classList.remove("fly"); }
+
+  if(y>max-120){ owl.classList.add("land"); }
+  else{ owl.classList.remove("land"); }
 });
 </script>
 
