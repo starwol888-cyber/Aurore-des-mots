@@ -6,7 +6,7 @@
 
   <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-  <meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes apaisants, lus à voix haute, pour éveiller l’esprit et calmer le cœur." />
+  <meta name="description" content="Aurore des Mots t’offre chaque jour une citation ou un poème apaisant, choisi au hasard et lu à voix haute." />
   <meta name="theme-color" content="#0E1A1F" />
 
   <style>
@@ -23,21 +23,17 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: radial-gradient(circle at top, var(--bleu-canard), var(--nuit) 70%);
       color: var(--etoile);
-      line-height: 1.7;
-    }
-
-    header {
-      padding: 64px 24px 48px;
+      line-height: 1.8;
       text-align: center;
     }
 
+    header {
+      padding: 60px 24px 40px;
+    }
+
     header img {
-      width: 180px;
-      max-width: 60%;
-      margin-bottom: 28px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      width: 170px;
+      margin-bottom: 24px;
       filter: drop-shadow(0 0 25px rgba(201,183,255,0.5));
     }
 
@@ -47,28 +43,33 @@
       margin-bottom: 12px;
     }
 
-    h2 {
-      font-size: 30px;
-      color: var(--lila);
-      margin-bottom: 24px;
-    }
-
-    p {
+    header p {
       color: var(--brume);
       font-size: 18px;
-    }
-
-    section {
-      padding: 64px 24px;
-      max-width: 900px;
+      max-width: 620px;
       margin: 0 auto;
     }
 
-    .citation {
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .type {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      color: var(--brume);
+      margin-bottom: 12px;
+    }
+
+    .texte {
+      font-size: 22px;
       font-style: italic;
-      font-size: 20px;
       color: var(--etoile);
       margin: 32px 0;
+      white-space: pre-line;
     }
 
     button {
@@ -79,31 +80,18 @@
       border-radius: 24px;
       font-size: 16px;
       cursor: pointer;
-      margin-top: 12px;
-    }
-
-    .box {
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 28px;
-      margin-top: 24px;
+      margin: 8px;
     }
 
     footer {
-      text-align: center;
       padding: 48px 24px;
       font-size: 14px;
       color: var(--brume);
     }
 
-    .lang {
-      margin-top: 32px;
-      font-size: 16px;
-      color: var(--brume);
-    }
-
-    .qr {
+    .qr img {
       margin-top: 24px;
+      width: 180px;
     }
   </style>
 </head>
@@ -111,105 +99,84 @@
 <body>
 
 <header>
-  <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots - Hibou" />
+  <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots">
   <h1>Aurore des Mots</h1>
-  <p>
-    Des mots pour te réveiller.<br>
-    Des silences pour t’apaiser.<br>
-    Une application de citations et de poèmes à recevoir chaque jour.
-  </p>
+  <p>Des mots pour te réveiller.<br>Des silences pour t’apaiser.</p>
 </header>
 
 <section>
-  <h2>Pourquoi Aurore des Mots ?</h2>
+  <div class="type" id="typeTexte"></div>
+  <div class="texte" id="contenu"></div>
 
-  <p class="citation" id="citation">
-    « Le silence n’est jamais vide, il est plein de réponses. »
-  </p>
-
-  <button onclick="lireTexte(document.getElementById('citation').innerText)">
-    🎧 Écouter la voix
-  </button>
+  <button onclick="lire()">🎧 Écouter</button>
+  <button onclick="nouveauTexte()">🔄 Nouveau texte</button>
 </section>
 
 <section>
-  <h2>Une expérience à ton rythme</h2>
-
-  <div class="box">
-    <p>
-      🔓 <strong>Version gratuite</strong><br>
-      • Un texte inspirant par jour<br>
-      • Lecture vocale incluse<br>
-      • Sans engagement
-    </p>
-  </div>
-
-  <div class="box">
-    <p>
-      💎 <strong>Version premium</strong><br>
-      • Textes exclusifs et poèmes longs<br>
-      • Choix de la voix et du rythme<br>
-      • Notifications personnalisées<br>
-      • Accès hors ligne
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>Télécharger l’application</h2>
-
-  <p>
-    L’application te permet de recevoir les textes directement sur ton téléphone,
-    même hors connexion, avec une expérience plus intime et immersive.
+  <h2 style="color: var(--lila);">Pourquoi l’application ?</h2>
+  <p style="color: var(--brume); max-width: 700px; margin: auto;">
+    L’application permet de recevoir un texte quotidien personnalisé,
+    de sauvegarder tes favoris, d’écouter différentes voix
+    et de créer un véritable rituel de calme.
   </p>
 
   <div class="qr">
-    <p>📲 Scan ce QR code pour accéder à l’application :</p>
-    <img src="qr-app.png" alt="QR code application" width="180" />
+    <img src="qr-app.png" alt="QR code application">
+    <p>📲 Télécharger l’application</p>
   </div>
 </section>
 
-<section>
-  <h2>English version</h2>
-
-  <p class="lang">
-    <strong>Aurore of Words</strong><br>
-    Gentle words to awaken your soul.<br>
-    Daily quotes and poems, softly read aloud.
-  </p>
-</section>
-
 <footer>
-  © Aurore des Mots — Tous droits réservés<br>
-  Créé avec douceur et intention ✨
+  © Aurore des Mots — Tous droits réservés
 </footer>
 
 <script>
-  let selectedVoice = null;
+  const citations = [
+    "Aujourd’hui, tu peux avancer sans te justifier.",
+    "La douceur est une force qui ne fait pas de bruit.",
+    "Tu n’es pas en retard, tu es en chemin.",
+    "Ce que tu ressens a le droit d’exister.",
+    "Même lentement, tu avances."
+  ];
 
-  function loadVoices() {
-    const voices = speechSynthesis.getVoices();
+  const poemes = [
+    "Respire.\nLe monde n’attend rien de toi\nsinon ta présence.",
+    "Le silence\nn’est pas un vide\nmais un refuge.",
+    "Tu marches encore\nmême quand tu doutes,\net c’est déjà immense.",
+    "Entre deux pensées\nil y a un espace de paix.",
+    "La nuit te rend\nce que le jour a dispersé."
+  ];
 
-    selectedVoice =
-      voices.find(v => v.name.includes("Google") && v.lang.startsWith("fr")) ||
-      voices.find(v => v.lang.startsWith("fr")) ||
-      voices[0];
+  const typeEl = document.getElementById("typeTexte");
+  const contenuEl = document.getElementById("contenu");
+
+  function afficherTexte() {
+    const choix = Math.random() < 0.5 ? "citation" : "poeme";
+
+    if (choix === "citation") {
+      typeEl.textContent = "Citation";
+      contenuEl.textContent = citations[Math.floor(Math.random() * citations.length)];
+    } else {
+      typeEl.textContent = "Poème";
+      contenuEl.textContent = poemes[Math.floor(Math.random() * poemes.length)];
+    }
   }
 
-  speechSynthesis.onvoiceschanged = loadVoices;
+  function nouveauTexte() {
+    window.speechSynthesis.cancel();
+    afficherTexte();
+  }
 
-  function lireTexte(texte) {
-    if (!selectedVoice) loadVoices();
-
+  function lire() {
+    const texte = contenuEl.textContent;
     const utterance = new SpeechSynthesisUtterance(texte);
-    utterance.voice = selectedVoice;
+    utterance.lang = "fr-FR";
     utterance.rate = 0.85;
     utterance.pitch = 1.1;
-    utterance.volume = 1;
-
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
+    window.speechSynthesis.speak(utterance);
   }
+
+  afficherTexte();
 </script>
 
 </body>
