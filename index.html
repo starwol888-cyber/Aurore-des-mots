@@ -3,330 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
-
-<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes originaux, lus à voix haute, pour apaiser l’esprit et nourrir l’âme.">
-<meta name="theme-color" content="#0E1A1F">
+<title>Aurore des Mots</title>
 
 <style>
-:root{
-  --nuit:#0E1A1F;
-  --bleu-canard:#1F4E5F;
-  --lila:#C9B7FF;
-  --etoile:#EAE6FF;
-  --brume:#9FB7C3;
-}
-
+/* ===== BASE ===== */
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:radial-gradient(circle at top,var(--bleu-canard),var(--nuit) 70%);
-  color:var(--etoile);
-  line-height:1.7;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+  background:linear-gradient(#0E1E26,#0B141A);
+  color:#EDEAFF;
   overflow-x:hidden;
 }
 
-/* ⭐ CIEL ÉTOILÉ */
-canvas{
+/* ===== ÉTOILES ===== */
+.stars{
   position:fixed;
   inset:0;
-  z-index:0;
-  pointer-events:none;
-}
-
-/* 🦉 HIBOU – visible dès le chargement */
-.owl{
-  position:fixed;
-  bottom:40px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90px;
-  height:90px;
-  border-radius:50%;
   background:
-    radial-gradient(circle at 35% 35%, #EAE6FF, #C9B7FF 45%, #1F4E5F 80%);
-  box-shadow:0 0 35px rgba(201,183,255,.6);
-  z-index:3;
-  transition:transform 1.5s ease, bottom 1.5s ease;
+    radial-gradient(1px 1px at 10% 20%,#fff,transparent),
+    radial-gradient(1px 1px at 80% 40%,#fff,transparent),
+    radial-gradient(1px 1px at 50% 70%,#fff,transparent),
+    radial-gradient(1px 1px at 30% 90%,#fff,transparent);
+  animation:twinkle 6s infinite alternate;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes twinkle{
+  from{opacity:.3}
+  to{opacity:.8}
 }
 
-/* Vol doux */
-.owl.fly{
-  transform:translate(-50%, -120px) scale(0.95);
-}
-
-/* Pose finale */
-.owl.land{
-  bottom:20px;
-  transform:translateX(-50%) scale(1);
-}
-
-/* STRUCTURE */
-header,section,footer{
+/* ===== CONTENU ===== */
+main{
   position:relative;
-  z-index:2;
+  z-index:1;
+  padding:40px 20px 120px;
+  max-width:720px;
+  margin:auto;
 }
 
-header{
-  text-align:center;
-  padding:70px 24px 40px;
-}
-
-header h1{
+h1{
   font-size:42px;
-  color:var(--lila);
+  text-align:center;
+  color:#CDBBFF;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  text-align:center;
+  opacity:.85;
+  margin-bottom:50px;
+}
+
+.section{
+  background:rgba(255,255,255,.04);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.section h2{
   margin-bottom:12px;
-}
-
-header p{
-  max-width:620px;
-  margin:0 auto;
-  color:var(--brume);
-}
-
-section{
-  max-width:900px;
-  margin:0 auto;
-  padding:64px 24px;
-}
-
-h2{
-  color:var(--lila);
-  margin-bottom:16px;
-}
-
-.card{
-  background:rgba(255,255,255,.05);
-  border-radius:24px;
-  padding:32px;
-  backdrop-filter:blur(10px);
-}
-
-#contenu{
-  white-space:pre-line;
-  font-size:20px;
-  margin:24px 0;
+  color:#E7DDFF;
 }
 
 button{
-  background:var(--lila);
-  color:#0E1A1F;
+  background:#CDBBFF;
+  color:#1A1A1A;
   border:none;
+  padding:12px 20px;
   border-radius:30px;
-  padding:14px 26px;
-  margin:8px;
   font-weight:600;
   cursor:pointer;
 }
 
-button:hover{opacity:.9}
-
-/* QR */
-.qr-box{
-  border:2px dashed var(--lila);
-  padding:24px;
-  border-radius:20px;
-  margin-top:20px;
+/* ===== QR CODE ===== */
+.qr{
   text-align:center;
 }
-
-.qr-placeholder{
-  width:160px;
-  height:160px;
-  margin:0 auto;
-  background:linear-gradient(45deg,var(--lila),var(--bleu-canard));
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#0E1A1F;
-  font-weight:700;
+.qr img{
+  width:200px;
+  border-radius:18px;
+  margin:16px 0;
 }
 
-/* FIN */
+/* ===== FIN POÉTIQUE ===== */
 .final{
   text-align:center;
-  padding:120px 24px;
-  color:var(--brume);
+  margin-top:80px;
+  opacity:.8;
   font-style:italic;
 }
 
-.points{
-  font-size:40px;
-  animation:fade 6s infinite;
+/* ===== HIBOU ===== */
+.owl{
+  position:fixed;
+  right:20px;
+  bottom:140px;
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 35%, #ECE7FF, #C9B7FF 45%, #1C3E4A 80%);
+  box-shadow:0 0 25px rgba(201,183,255,.45);
+  z-index:2;
+  pointer-events:none;
+  transition:transform .9s ease,bottom .9s ease,opacity .6s ease;
 }
 
-@keyframes fade{
-  0%,100%{opacity:0;}
-  50%{opacity:.6;}
+/* VOL */
+.owl.fly{
+  transform:translateY(-120px) rotate(-4deg);
+  opacity:.9;
 }
 
-footer{
-  text-align:center;
-  padding:40px;
-  font-size:14px;
-  color:var(--brume);
+/* POSÉ */
+.owl.land{
+  bottom:16px;
+  transform:translateY(0) rotate(0);
+  opacity:.7;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="stars"></canvas>
-<div class="owl" id="owl" aria-hidden="true"></div>
+<div class="stars"></div>
 
-<header>
+<main>
+
   <h1>Aurore des Mots</h1>
-  <p>
+  <p class="subtitle">
     Des mots pour te réveiller.<br>
-    Des silences pour t’apaiser.<br>
-    Une présence douce, chaque jour.
+    Des silences pour t’apaiser.
   </p>
-</header>
 
-<section>
-  <h2>✨ Texte du moment</h2>
-  <div class="card">
-    <h3 id="typeTexte"></h3>
-    <div id="contenu"></div>
-    <button onclick="nouveauTexte()">Nouveau texte</button>
-    <button onclick="lire()">Écouter</button>
-  </div>
-</section>
-
-<section>
-  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
-  <div class="card">
-    Aurore des Mots t’offre une pause consciente.
-    Un espace pour ralentir, respirer et te recentrer.
-    Les mots deviennent un refuge, jamais une injonction.
-  </div>
-</section>
-
-<section>
-  <h2>💎 Version gratuite & Premium</h2>
-  <div class="card">
-    <p><strong>Gratuit</strong><br>
-      • Citations et poèmes quotidiens<br>
-      • Lecture vocale douce<br>
-      • Accès en français
+  <section class="section">
+    <h2>✨ Texte du moment</h2>
+    <p>
+      Le silence est un refuge.<br>
+      Il n’est pas vide : il écoute.
     </p>
-    <p><strong>Premium</strong><br>
-      • Poèmes exclusifs et plus longs<br>
-      • Choix de la voix<br>
-      • Français & Anglais<br>
-      • Sans publicité
-    </p>
+    <br>
+    <button>Nouveau texte</button>
+  </section>
+
+  <section class="section">
+    <h2>📱 Télécharger l’application</h2>
+    <p>Scanne le QR code pour accéder à l’application dès sa sortie.</p>
+    <div class="qr">
+      <img src="qr-code.png" alt="QR code Aurore des Mots">
+      <p>Disponible prochainement sur Android et iOS</p>
+    </div>
+  </section>
+
+  <div class="final">
+    Et quand les mots se taisent,<br>
+    le hibou veille encore,<br>
+    quelque part entre la nuit et l’aube.
   </div>
-</section>
 
-<section>
-  <h2>📱 Télécharger l’application</h2>
-  <div class="qr-box">
-    <p>Le QR code sera actif au lancement officiel.</p>
-    <div class="qr-placeholder">QR APP</div>
-  </div>
-</section>
+</main>
 
-<section class="final">
-  <p>
-    Quand la nuit s’installe,<br>
-    les mots restent encore un instant.
-  </p>
-  <div class="points">…</div>
-</section>
-
-<footer>
-  © 2026 — Aurore des Mots
-</footer>
+<!-- 🦉 HIBOU -->
+<div class="owl fly" id="owl"></div>
 
 <script>
-/* ⭐ ÉTOILES */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-let w,h;
-
-function resize(){
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
-
-const stars = Array.from({length:120}, () => ({
-  x:Math.random()*w,
-  y:Math.random()*h,
-  r:Math.random()*1.4+.3,
-  a:Math.random()
-}));
-
-function drawStars(){
-  ctx.clearRect(0,0,w,h);
-  stars.forEach(s=>{
-    ctx.fillStyle = `rgba(234,230,255,${s.a})`;
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fill();
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
-
-/* 📜 TEXTES */
-const citations=[
-  "Tu n’es pas en retard, tu es en chemin.",
-  "La douceur est une force silencieuse.",
-  "Aujourd’hui suffit.",
-  "Même lentement, tu avances."
-];
-
-const poemes=[
-  "Respire.\nLe monde n’attend rien de toi\nsinon ta présence.",
-  "Le silence\nn’est pas un vide\nmais un refuge.",
-  "Entre deux pensées\nil y a déjà la paix."
-];
-
-const typeEl=document.getElementById("typeTexte");
-const contenuEl=document.getElementById("contenu");
-
-function afficherTexte(){
-  const citation=Math.random()<0.5;
-  typeEl.textContent=citation?"Citation":"Poème";
-  contenuEl.textContent=citation
-    ?citations[Math.floor(Math.random()*citations.length)]
-    :poemes[Math.floor(Math.random()*poemes.length)];
-}
-
-function nouveauTexte(){
-  speechSynthesis.cancel();
-  afficherTexte();
-}
-
-/* 🔊 VOIX */
-function lire(){
-  const u=new SpeechSynthesisUtterance(contenuEl.textContent);
-  u.lang="fr-FR";
-  u.rate=0.85;
-  u.pitch=1.05;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-}
-
-afficherTexte();
-
-/* 🦉 HIBOU – vol puis pose */
 const owl=document.getElementById("owl");
 
 window.addEventListener("scroll",()=>{
-  const y=window.scrollY;
+  const scrollTop=window.scrollY;
   const max=document.documentElement.scrollHeight-window.innerHeight;
+  const ratio=scrollTop/max;
 
-  if(y>150){ owl.classList.add("fly"); }
-  else{ owl.classList.remove("fly"); }
-
-  if(y>max-120){ owl.classList.add("land"); }
-  else{ owl.classList.remove("land"); }
+  if(ratio<0.9){
+    owl.classList.add("fly");
+    owl.classList.remove("land");
+  }else{
+    owl.classList.remove("fly");
+    owl.classList.add("land");
+  }
 });
 </script>
 
