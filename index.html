@@ -58,18 +58,9 @@
     }
 
     h2 {
-      font-size: 28px;
       color: var(--lila);
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .box {
-      background: rgba(255,255,255,0.04);
-      padding: 28px;
-      border-radius: 22px;
-      margin-bottom: 32px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      margin-bottom: 24px;
+      font-size: 28px;
     }
 
     .features {
@@ -78,32 +69,17 @@
       gap: 20px;
     }
 
-    .feature {
+    .box {
       background: rgba(255,255,255,0.05);
       padding: 20px;
-      border-radius: 18px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
 
-    button {
-      background: var(--lila);
-      color: #0E1A1F;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 30px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 12px;
-    }
-
-    .qr {
-      text-align: center;
-    }
-
-    .qr img {
-      width: 180px;
-      margin-top: 16px;
-      filter: drop-shadow(0 0 15px rgba(201,183,255,0.4));
+    .citation {
+      font-style: italic;
+      color: var(--brume);
+      margin: 16px 0;
     }
 
     footer {
@@ -112,24 +88,18 @@
       font-size: 14px;
       color: var(--brume);
     }
-
-    footer span {
-      display: block;
-      margin-top: 8px;
-      opacity: 0.7;
-    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots – Hibou" />
+  <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots - Hibou" />
   <h1>Aurore des Mots</h1>
   <p>
     Des mots pour te réveiller.<br>
     Des silences pour t’apaiser.<br>
-    Une application de citations et de poèmes à vivre chaque jour.
+    Une application de citations et poèmes à écouter, lire et ressentir.
   </p>
 </header>
 
@@ -137,87 +107,54 @@
   <h2>Pourquoi Aurore des Mots ?</h2>
 
   <div class="features">
-    <div class="feature">📖 Textes uniques, modernes et jamais répétés</div>
-    <div class="feature">🎧 Lecture vocale douce, par la voix de ton téléphone</div>
-    <div class="feature">🌙 Un rituel quotidien, simple et apaisant</div>
-    <div class="feature">🌍 Disponible en français et en anglais</div>
+    <div class="box">📖 Textes et citations quotidiennes</div>
+    <div class="box">🎧 Lecture vocale apaisante</div>
+    <div class="box">🌙 Un moment de calme chaque jour</div>
+    <div class="box">🌍 Version française & anglaise</div>
   </div>
+</section>
+
+<section>
+  <h2>Extraits</h2>
+
+  <p class="citation">« Ce que tu cherches à l’extérieur murmure déjà en toi. »</p>
+  <p class="citation">« Le silence n’est jamais vide, il est plein de réponses. »</p>
+  <p class="citation">« Chaque matin est une seconde chance déguisée en habitude. »</p>
 </section>
 
 <section>
   <h2>Une expérience à ton rythme</h2>
 
-  <div class="box">
-    <p>
+  <div class="features">
+    <div class="box">
       <strong>🔓 Version gratuite</strong><br>
-      Un texte par jour, choisi avec soin.<br>
-      Lecture vocale incluse.<br>
-      Sans engagement.
-    </p>
+      Un texte par jour<br>
+      Lecture vocale incluse<br>
+      Sans engagement
+    </div>
 
-    <p style="margin-top:24px;">
-      <strong>✨ Version Premium</strong><br>
-      Plusieurs textes par jour.<br>
-      Accès aux archives.<br>
-      Voix premium plus apaisantes.<br>
-      Contenus exclusifs et mode hors-ligne.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>Écouter un texte</h2>
-
-  <div class="box">
-    <p id="texte">
-      « Chaque matin est une porte discrète.
-      Il suffit d’un mot pour l’ouvrir,
-      et d’un souffle pour entrer. »
-    </p>
-    <button onclick="lireTexte()">🔊 Écouter</button>
+    <div class="box">
+      <strong>✨ Version premium</strong><br>
+      Accès illimité aux textes<br>
+      Voix exclusives & ambiances sonores<br>
+      Contenus bilingues FR / EN
+    </div>
   </div>
 </section>
 
 <section>
   <h2>Télécharger l’application</h2>
-
-  <div class="box qr">
-    <p>
-      L’application sera bientôt disponible sur Google Play.<br>
-      Scanne le QR code pour être redirigé dès sa sortie.
-    </p>
-    <img src="qr-app.png" alt="QR code Aurore des Mots">
-  </div>
-</section>
-
-<section>
-  <h2>English version</h2>
-
-  <div class="box">
-    <p>
-      <strong>Aurora of Words</strong><br>
-      A daily moment of calm and inspiration.<br>
-      Modern quotes and poems, read aloud,<br>
-      designed to awaken and soothe.
-    </p>
-  </div>
+  <p>
+    Scanne le QR code pour accéder à l’application dès sa publication sur Google Play.
+    <br><br>
+    (Le lien sera activé prochainement)
+  </p>
 </section>
 
 <footer>
-  © 2026 — Aurore des Mots
-  <span>Un projet poétique et vivant</span>
+  © Aurore des Mots — Tous droits réservés<br>
+  Une application pour ralentir, ressentir et se reconnecter.
 </footer>
-
-<script>
-  function lireTexte() {
-    const texte = document.getElementById("texte").innerText;
-    const voix = new SpeechSynthesisUtterance(texte);
-    voix.lang = "fr-FR";
-    voix.rate = 0.9;
-    voix.pitch = 1;
-    speechSynthesis.speak(voix);
-  }
-</script>
 
 </body>
 </html>
