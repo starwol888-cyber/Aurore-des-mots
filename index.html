@@ -24,44 +24,11 @@ body{
   background:radial-gradient(circle at top,var(--bleu-canard),var(--nuit) 70%);
   color:var(--etoile);
   line-height:1.7;
-  overflow-x:hidden;
 }
-
-/* 🌙 LUNE */
-.moon{
-  position:fixed;
-  top:50px;
-  right:60px;
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, #fff, #d6d0ff 60%, #b9b2ff);
-  box-shadow:0 0 60px rgba(201,183,255,.4);
-  z-index:1;
-  animation:floatMoon 18s ease-in-out infinite;
-}
-
-@keyframes floatMoon{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(20px);}
-}
-
-/* ⭐ ÉTOILES */
-#etoiles{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:0;
-  transition:opacity 4s ease;
-}
-#etoiles.visible{opacity:1;}
 
 header{
   text-align:center;
   padding:60px 24px 40px;
-  position:relative;
-  z-index:2;
 }
 
 header img{
@@ -86,18 +53,19 @@ section{
   max-width:900px;
   margin:0 auto;
   padding:64px 24px;
-  position:relative;
-  z-index:2;
 }
 
-h2{color:var(--lila);}
+h2{
+  color:var(--lila);
+  margin-bottom:16px;
+}
 
 .card{
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.04);
   border-radius:24px;
   padding:32px;
   margin-top:24px;
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(8px);
 }
 
 #contenu{
@@ -117,46 +85,26 @@ button{
   cursor:pointer;
 }
 
-button:hover{opacity:.9;}
+button:hover{
+  opacity:.9;
+}
 
 .qr{
   width:160px;
-  margin-top:16px;
-}
-
-/* ✨ FIN */
-.final{
-  text-align:center;
-  padding:120px 24px 160px;
-  color:var(--brume);
-  font-style:italic;
-  font-size:18px;
-}
-
-.points{
-  font-size:36px;
-  opacity:.6;
-  animation:fadeDots 6s ease-in-out infinite;
-}
-
-@keyframes fadeDots{
-  0%,100%{opacity:0;}
-  50%{opacity:.6;}
+  max-width:100%;
+  margin-top:20px;
 }
 
 footer{
   text-align:center;
   padding:40px 20px;
-  font-size:14px;
   color:var(--brume);
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
-
-<div class="moon"></div>
-<canvas id="etoiles"></canvas>
 
 <header>
   <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots">
@@ -170,9 +118,11 @@ footer{
 
 <section>
   <h2>✨ Texte du moment</h2>
+
   <div class="card">
     <h3 id="typeTexte"></h3>
     <div id="contenu"></div>
+
     <button onclick="nouveauTexte()">Nouveau texte</button>
     <button onclick="lire()">Écouter</button>
   </div>
@@ -181,44 +131,50 @@ footer{
 <section>
   <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
   <div class="card">
-    Aurore des Mots t’offre une pause quotidienne.
-    Un espace pour respirer, ressentir, ralentir.
-    Les mots deviennent un refuge, un repère,
-    une lumière discrète dans le rythme du quotidien.
+    <p>
+      Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
+      Chaque citation ou poème est une pause consciente, un souffle, un rappel que tu
+      peux avancer à ton rythme, sans pression.
+    </p>
   </div>
 </section>
 
 <section>
-  <h2>💎 Version gratuite & Premium</h2>
+  <h2>💎 Versions de l’application</h2>
   <div class="card">
     <p><strong>Version gratuite</strong><br>
-      • Citations et poèmes quotidiens<br>
-      • Lecture vocale douce<br>
-      • Accès en français
+      • Texte quotidien aléatoire<br>
+      • Lecture vocale<br>
+      • Accès français
     </p>
     <p><strong>Version premium</strong><br>
-      • Poèmes exclusifs et plus longs<br>
+      • Textes exclusifs et longs poèmes<br>
       • Choix de la voix<br>
-      • Français & Anglais<br>
-      • Aucun contenu sponsorisé
+      • Mode nuit profond<br>
+      • Français + Anglais<br>
+      • Aucune publicité
     </p>
   </div>
 </section>
 
+<!-- ✅ SECTION QR CODE CORRIGÉE (sécurisée) -->
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
-    <p>Scanne le QR code pour accéder à l’application.</p>
-    <img src="qr-app.png" alt="QR code application" class="qr">
-  </div>
-</section>
+    <p>Scanne le QR code pour accéder à l’application dès sa sortie.</p>
 
-<section class="final">
-  <p>
-    Quand les mots se taisent,<br>
-    la nuit veille encore un instant.
-  </p>
-  <div class="points">…</div>
+    <img
+      src="images/qr-app.png"
+      alt="QR code application Aurore des Mots"
+      class="qr"
+      loading="lazy"
+      onerror="this.style.display='none'; document.getElementById('qr-error').style.display='block';"
+    >
+
+    <p id="qr-error" style="display:none; color:var(--brume); font-size:14px;">
+      QR code indisponible pour le moment.
+    </p>
+  </div>
 </section>
 
 <footer>
@@ -226,50 +182,6 @@ footer{
 </footer>
 
 <script>
-/* 🌠 ÉTOILES */
-const canvas=document.getElementById("etoiles");
-const ctx=canvas.getContext("2d");
-let w,h,stars=[];
-
-function resize(){
-  w=canvas.width=window.innerWidth;
-  h=canvas.height=window.innerHeight;
-}
-window.addEventListener("resize",resize);
-resize();
-
-for(let i=0;i<120;i++){
-  stars.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    r:Math.random()*1.2+.3,
-    a:Math.random(),
-    s:Math.random()*.01+.002
-  });
-}
-
-function drawStars(){
-  ctx.clearRect(0,0,w,h);
-  stars.forEach(s=>{
-    s.a+=s.s;
-    if(s.a>1||s.a<0)s.s*=-1;
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(234,230,255,${s.a})`;
-    ctx.fill();
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
-
-window.addEventListener("scroll",()=>{
-  const max=document.documentElement.scrollHeight-window.innerHeight;
-  if(window.scrollY/max>0.85){
-    canvas.classList.add("visible");
-  }
-});
-
-/* 📜 TEXTES */
 const citations=[
 "Tu n’es pas en retard, tu es en chemin.",
 "La douceur est une force silencieuse.",
@@ -290,9 +202,9 @@ const typeEl=document.getElementById("typeTexte");
 const contenuEl=document.getElementById("contenu");
 
 function afficherTexte(){
-  const isCitation=Math.random()<0.5;
-  typeEl.textContent=isCitation?"Citation":"Poème";
-  contenuEl.textContent=isCitation
+  const citation=Math.random()<0.5;
+  typeEl.textContent=citation?"Citation":"Poème";
+  contenuEl.textContent=citation
     ?citations[Math.floor(Math.random()*citations.length)]
     :poemes[Math.floor(Math.random()*poemes.length)];
 }
@@ -302,18 +214,24 @@ function nouveauTexte(){
   afficherTexte();
 }
 
-let voix=null;
+let voixDouce=null;
+
 function chargerVoix(){
-  const v=speechSynthesis.getVoices();
-  voix=v.find(v=>v.lang.startsWith("fr"))||v[0];
+  const voix=speechSynthesis.getVoices();
+  voixDouce=
+    voix.find(v=>v.lang.startsWith("fr")&&v.name.includes("Google"))||
+    voix.find(v=>v.lang.startsWith("fr"))||
+    voix[0];
 }
+
 speechSynthesis.onvoiceschanged=chargerVoix;
 
 function lire(){
-  if(!voix)chargerVoix();
+  if(!voixDouce) chargerVoix();
   const u=new SpeechSynthesisUtterance(contenuEl.textContent);
-  u.voice=voix;
-  u.rate=.82;
+  u.voice=voixDouce;
+  u.lang="fr-FR";
+  u.rate=0.82;
   u.pitch=1.05;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
