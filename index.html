@@ -65,6 +65,7 @@ h2{
   border-radius:24px;
   padding:32px;
   margin-top:24px;
+  backdrop-filter:blur(8px);
 }
 
 #contenu{
@@ -84,9 +85,14 @@ button{
   cursor:pointer;
 }
 
+button:hover{
+  opacity:.9;
+}
+
 .qr{
   width:160px;
-  margin-top:16px;
+  max-width:100%;
+  margin-top:20px;
 }
 
 footer{
@@ -103,16 +109,20 @@ footer{
 <header>
   <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots">
   <h1>Aurore des Mots</h1>
-  <p>Des mots pour te réveiller.<br>
-     Des silences pour t’apaiser.<br>
-     Une présence douce, chaque jour.</p>
+  <p>
+    Des mots pour te réveiller.<br>
+    Des silences pour t’apaiser.<br>
+    Une présence douce, chaque jour.
+  </p>
 </header>
 
 <section>
   <h2>✨ Texte du moment</h2>
+
   <div class="card">
     <h3 id="typeTexte"></h3>
     <div id="contenu"></div>
+
     <button onclick="nouveauTexte()">Nouveau texte</button>
     <button onclick="lire()">Écouter</button>
   </div>
@@ -122,11 +132,9 @@ footer{
   <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
   <div class="card">
     <p>
-      Aurore des Mots t’offre un espace pour ralentir,
-      respirer et te reconnecter à l’essentiel.
-      Chaque texte est une pause,
-      un ancrage,
-      un moment pour toi.
+      Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
+      Chaque citation ou poème est une pause consciente, un souffle, un rappel que tu
+      peux avancer à ton rythme, sans pression.
     </p>
   </div>
 </section>
@@ -136,26 +144,35 @@ footer{
   <div class="card">
     <p><strong>Version gratuite</strong><br>
       • Texte quotidien aléatoire<br>
-      • Lecture vocale douce<br>
+      • Lecture vocale<br>
       • Accès français
     </p>
     <p><strong>Version premium</strong><br>
-      • Choix citations / poèmes / les deux<br>
-      • Sauvegarde des textes<br>
-      • Voix multiples<br>
+      • Textes exclusifs et longs poèmes<br>
+      • Choix de la voix<br>
+      • Mode nuit profond<br>
       • Français + Anglais<br>
-      • Sans publicité
+      • Aucune publicité
     </p>
   </div>
 </section>
 
+<!-- ✅ SECTION QR CODE CORRIGÉE (sécurisée) -->
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
     <p>Scanne le QR code pour accéder à l’application dès sa sortie.</p>
-    <img src="qr-app.png" alt="QR code application" class="qr" onerror="this.style.display='none'">
-    <p style="font-size:14px;opacity:.7;margin-top:12px;">
-      Disponible prochainement sur Android et iOS
+
+    <img
+      src="images/qr-app.png"
+      alt="QR code application Aurore des Mots"
+      class="qr"
+      loading="lazy"
+      onerror="this.style.display='none'; document.getElementById('qr-error').style.display='block';"
+    >
+
+    <p id="qr-error" style="display:none; color:var(--brume); font-size:14px;">
+      QR code indisponible pour le moment.
     </p>
   </div>
 </section>
@@ -178,16 +195,16 @@ const poemes=[
 "La nuit rend\nce que le jour disperse.",
 "Entre deux pensées\nil y a déjà la paix.",
 "Tu continues\nmême quand tu doutes,\net c’est immense.",
-"Le silence\nn’est pas un refuge vide\nmais un espace vivant."
+"Le silence\nn’est pas un vide\nmais un refuge."
 ];
 
 const typeEl=document.getElementById("typeTexte");
 const contenuEl=document.getElementById("contenu");
 
 function afficherTexte(){
-  const estCitation=Math.random()<0.5;
-  typeEl.textContent=estCitation?"Citation":"Poème";
-  contenuEl.textContent=estCitation
+  const citation=Math.random()<0.5;
+  typeEl.textContent=citation?"Citation":"Poème";
+  contenuEl.textContent=citation
     ?citations[Math.floor(Math.random()*citations.length)]
     :poemes[Math.floor(Math.random()*poemes.length)];
 }
@@ -207,7 +224,7 @@ function chargerVoix(){
     voix[0];
 }
 
-setTimeout(chargerVoix,500);
+speechSynthesis.onvoiceschanged=chargerVoix;
 
 function lire(){
   if(!voixDouce) chargerVoix();
