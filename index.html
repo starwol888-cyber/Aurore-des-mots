@@ -24,68 +24,28 @@ body{
   color:var(--etoile);
   line-height:1.7;
 
-  /* 🌌 CIEL ULTRA ÉTOILÉ */
+  /* 🌌 NUIT ÉTOILÉE DENSE & VISIBLE */
   background:
-    radial-gradient(2px 2px at 5% 10%, rgba(255,255,255,1), transparent 60%),
-    radial-gradient(1.5px 1.5px at 15% 40%, rgba(255,255,255,.9), transparent 60%),
-    radial-gradient(2.5px 2.5px at 25% 70%, rgba(201,183,255,1), transparent 65%),
-    radial-gradient(1px 1px at 35% 20%, rgba(255,255,255,.8), transparent 60%),
-    radial-gradient(2px 2px at 45% 55%, rgba(201,183,255,.95), transparent 65%),
-    radial-gradient(1.2px 1.2px at 55% 85%, rgba(255,255,255,.85), transparent 60%),
-    radial-gradient(2px 2px at 65% 30%, rgba(201,183,255,.9), transparent 65%),
-    radial-gradient(1px 1px at 75% 60%, rgba(255,255,255,.8), transparent 60%),
-    radial-gradient(2.5px 2.5px at 85% 15%, rgba(201,183,255,1), transparent 65%),
-    radial-gradient(1.5px 1.5px at 95% 75%, rgba(255,255,255,.9), transparent 60%),
+    radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.9), transparent 60%),
+    radial-gradient(1.5px 1.5px at 30% 70%, rgba(255,255,255,.8), transparent 60%),
+    radial-gradient(2px 2px at 50% 40%, rgba(201,183,255,.9), transparent 60%),
+    radial-gradient(1px 1px at 70% 15%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(2.5px 2.5px at 85% 60%, rgba(201,183,255,.8), transparent 65%),
+    radial-gradient(1.5px 1.5px at 20% 85%, rgba(255,255,255,.75), transparent 60%),
+    radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(2px 2px at 65% 80%, rgba(201,183,255,.85), transparent 65%),
+    radial-gradient(1.2px 1.2px at 90% 35%, rgba(255,255,255,.7), transparent 60%),
 
     linear-gradient(
       180deg,
-      #2C5161 0%,
+      #2B4F5F 0%,
       #1F4E5F 25%,
       #2A2359 50%,
       #120A1F 75%,
-      #05020C 100%
+      #07030F 100%
     );
 
   background-attachment: fixed;
-  overflow-x:hidden;
-}
-
-/* ☄️ ÉTOILES FILANTES */
-body::before,
-body::after{
-  content:"";
-  position:fixed;
-  top:-20%;
-  left:-30%;
-  width:200%;
-  height:200%;
-  pointer-events:none;
-  background:
-    linear-gradient(120deg, transparent 48%, rgba(255,255,255,.8) 50%, transparent 52%);
-  opacity:.35;
-  animation: etoileFilante 12s linear infinite;
-}
-
-body::after{
-  animation-delay:6s;
-  opacity:.25;
-}
-
-@keyframes etoileFilante{
-  0%{
-    transform:translate(-20%, -20%);
-    opacity:0;
-  }
-  10%{
-    opacity:.6;
-  }
-  20%{
-    opacity:0;
-  }
-  100%{
-    transform:translate(20%, 20%);
-    opacity:0;
-  }
 }
 
 header{
@@ -274,7 +234,8 @@ let voixDouce=null;
 
 function chargerVoix(){
   const voix=speechSynthesis.getVoices();
-  voixDouce = voix.find(v => v.lang==="fr-FR") || voix[0];
+  voixDouce =
+    voix.find(v => v.lang==="fr-FR") || voix[0];
 }
 
 speechSynthesis.onvoiceschanged=chargerVoix;
@@ -304,4 +265,4 @@ changerPoeme();
 </script>
 
 </body>
-</html>
+  </html>
