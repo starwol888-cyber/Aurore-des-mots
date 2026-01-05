@@ -6,7 +6,7 @@
 
 <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-<meta name="description" content="Citations et poèmes modernes, lus à voix haute, pour nourrir l’espoir, l’amour, le courage et la confiance.">
+<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes inspirants, lus à voix haute, pour apaiser l’esprit et nourrir l’âme.">
 <meta name="theme-color" content="#0E1A1F">
 
 <style>
@@ -21,20 +21,23 @@
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:radial-gradient(circle at top,var(--bleu-canard),var(--nuit) 75%);
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 40%),
+    radial-gradient(circle at bottom, rgba(255,255,255,0.03), transparent 50%),
+    radial-gradient(circle at top, var(--bleu-canard), var(--nuit) 70%);
   color:var(--etoile);
   line-height:1.7;
 }
 
 header{
   text-align:center;
-  padding:70px 24px 40px;
+  padding:60px 24px 40px;
 }
 
 header img{
   width:160px;
   margin-bottom:24px;
-  filter:drop-shadow(0 0 25px rgba(201,183,255,.5));
+  filter:drop-shadow(0 0 30px rgba(201,183,255,.6));
 }
 
 header h1{
@@ -61,14 +64,14 @@ h2{
 }
 
 .card{
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.04);
   border-radius:24px;
   padding:32px;
   margin-top:24px;
   backdrop-filter:blur(8px);
 }
 
-#contenu{
+.texte{
   white-space:pre-line;
   font-size:20px;
   margin:24px 0;
@@ -85,14 +88,19 @@ button{
   cursor:pointer;
 }
 
+button:hover{
+  opacity:.9;
+}
+
 .qr{
-  width:160px;
-  margin-top:20px;
+  width:180px;
+  max-width:100%;
+  margin-top:24px;
 }
 
 footer{
   text-align:center;
-  padding:50px 20px;
+  padding:40px 20px;
   color:var(--brume);
   font-size:14px;
 }
@@ -115,132 +123,108 @@ footer{
 <section>
   <h2>✨ Texte du moment</h2>
   <div class="card">
-    <h3 id="typeTexte"></h3>
-    <div id="contenu"></div>
-    <button onclick="nouveauTexte()">Changer de texte</button>
-    <button onclick="lire()">Écouter</button>
-  </div>
-</section>
-
-<!-- CE QUE L'APP APPORTE -->
-<section>
-  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
-  <div class="card">
-    <p>
-      Aurore des Mots t’accompagne jour après jour avec des mots choisis pour nourrir
-      l’espoir, l’amour, le courage et la confiance.  
-      Chaque texte est une pause consciente, un instant pour ralentir, respirer
-      et te recentrer sans pression.
-    </p>
+    <div id="texteMoment" class="texte"></div>
+    <button onclick="nouveauTexte()">Changer</button>
+    <button onclick="lire('texteMoment')">Écouter</button>
   </div>
 </section>
 
 <!-- CITATIONS -->
 <section>
-  <h2>✨ Citations inspirantes</h2>
+  <h2>💫 Citation inspirante</h2>
   <div class="card">
-    <p>L’espoir n’est pas d’attendre que tout aille bien, mais de continuer même quand tout tremble.<br><strong>— Noa Lune</strong></p>
-    <p>L’amour commence toujours là où tu cesses de te juger.<br><strong>— Élise Morvan</strong></p>
-    <p>L’abondance n’est pas ce que tu possèdes, mais ce que tu laisses circuler.<br><strong>— L. Ardent</strong></p>
-    <p>Le courage n’est pas l’absence de peur, c’est la décision de ne pas lui laisser le dernier mot.<br><strong>— Sohan Vale</strong></p>
-    <p>Après la nuit la plus sombre, l’aube trouve toujours son chemin.<br><strong>— Proverbe, Anonyme</strong></p>
+    <div id="citation" class="texte"></div>
+    <button onclick="nouvelleCitation()">Changer</button>
+    <button onclick="lire('citation')">Écouter</button>
   </div>
 </section>
 
-<!-- POEMES -->
+<!-- POÈMES -->
 <section>
-  <h2>🌙 Poèmes</h2>
+  <h2>🌙 Poème</h2>
   <div class="card">
-    <p>
-      Tu portes plus de lumière<br>
-      que tu ne le crois,<br>
-      même les jours où tu doutes.<br>
-      <strong>— Noa Lune</strong>
-    </p>
-
-    <p>
-      L’abondance commence<br>
-      le jour où tu remercies<br>
-      avant même de recevoir.<br>
-      <strong>— L. Ardent</strong>
-    </p>
-
-    <p>
-      Le courage<br>
-      n’élève pas la voix,<br>
-      il reste quand tout vacille.<br>
-      <strong>— Sohan Vale</strong>
-    </p>
+    <div id="poeme" class="texte"></div>
+    <button onclick="nouveauPoeme()">Changer</button>
+    <button onclick="lire('poeme')">Écouter</button>
   </div>
 </section>
 
-<!-- VERSIONS -->
+<!-- APPORT -->
 <section>
-  <h2>💎 Versions de l’application</h2>
+  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
   <div class="card">
-    <p><strong>Version gratuite</strong><br>
-      • Textes aléatoires<br>
-      • Lecture vocale<br>
-      • Accès français
-    </p>
-    <p><strong>Version premium</strong><br>
-      • Citations & poèmes exclusifs<br>
-      • Textes plus longs<br>
-      • Voix améliorées<br>
-      • Français & Anglais<br>
-      • Aucune publicité
+    <p>
+      Aurore des Mots est un refuge discret dans le tumulte du quotidien.
+      Une invitation à ralentir, à ressentir, à te reconnecter à ce qui compte vraiment.
+      Quelques mots peuvent parfois suffire à éclairer une journée entière.
     </p>
   </div>
 </section>
 
-<!-- QR CODE -->
+<!-- TÉLÉCHARGEMENT -->
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
-    <p>Scanne le QR code pour accéder à l’application.</p>
-    <img src="qr-app.png" alt="QR code Aurore des Mots" class="qr">
+    <p>
+      Reçois chaque jour une citation ou un poème directement sur ton téléphone,
+      même hors ligne. Une présence douce, toujours à portée de main.
+    </p>
+
+    <img src="qr-app.png" alt="QR code application Aurore des Mots" class="qr">
+
+    <p style="font-size:14px;color:var(--brume);margin-top:16px;">
+      Application mobile disponible prochainement
+    </p>
   </div>
 </section>
 
 <footer>
-  © 2026 — Aurore des Mots  
+  © 2026 — Aurore des Mots
 </footer>
 
 <script>
+const textesMoment=[
+"Ce soir, laisse tomber ce qui pèse. Le ciel n’attend rien de toi.",
+"Tu n’as rien à prouver. Ta présence suffit.",
+"Parfois, ralentir est la décision la plus courageuse."
+];
+
 const citations=[
-"Tu n’as rien à prouver. Être là suffit déjà. — Noa Lune",
-"Avancer doucement est une forme de courage. — Élise Morvan",
-"La douceur n’est pas une pause, c’est un choix. — L. Ardent",
-"Même dans le calme, tu construis quelque chose. — Mila Rozen",
-"Ce moment est à toi. Rien d’autre n’est urgent. — Sohan Vale"
+"La douceur est une force silencieuse. — Proverbe anonyme",
+"Chaque pas compte, même les plus lents. — Proverbe anonyme",
+"L’espoir commence là où la peur s’arrête. — Proverbe anonyme"
 ];
 
 const poemes=[
-"Respire.\nLa nuit ne te demande rien,\nelle t’accueille.\n— Noa Lune",
-"Entre deux pensées,\nil existe un espace\noù tout peut se déposer.\n— Élise Morvan",
-"Tu avances encore,\nmême quand tu doutes,\net c’est déjà immense.\n— L. Ardent",
-"Le silence n’est pas vide.\nIl est plein de ce que tu ressens.\n— Mila Rozen",
-"Ralentir,\nce n’est pas fuir,\nc’est écouter.\n— Sohan Vale"
+"Respire.\nMême la nuit prépare l’aube.\n— Poème anonyme",
+"Tu avances,\nmême quand tu doutes.\nEt c’est déjà immense.\n— Poème anonyme",
+"Laisse la vie\nte surprendre doucement.\n— Poème anonyme"
 ];
 
-const typeEl=document.getElementById("typeTexte");
-const contenuEl=document.getElementById("contenu");
-
-function afficherTexte(){
-  const isCitation=Math.random()<0.5;
-  typeEl.textContent=isCitation?"Citation":"Poème";
-  contenuEl.textContent=isCitation
-    ?citations[Math.floor(Math.random()*citations.length)]
-    :poemes[Math.floor(Math.random()*poemes.length)];
+function aleatoire(tab){
+  return tab[Math.floor(Math.random()*tab.length)];
 }
 
 function nouveauTexte(){
-  speechSynthesis.cancel();
-  afficherTexte();
+  document.getElementById("texteMoment").textContent=aleatoire(textesMoment);
 }
 
-function lire(){
-  const u=new SpeechSynthesisUtterance(contenuEl.textContent);
+function nouvelleCitation(){
+  document.getElementById("citation").textContent=aleatoire(citations);
+}
+
+function nouveauPoeme(){
+  document.getElementById("poeme").textContent=aleatoire(poemes);
+}
+
+let voix=null;
+speechSynthesis.onvoiceschanged=()=>{
+  voix=speechSynthesis.getVoices().find(v=>v.lang.startsWith("fr")) || speechSynthesis.getVoices()[0];
+};
+
+function lire(id){
+  const u=new SpeechSynthesisUtterance(document.getElementById(id).textContent);
+  u.voice=voix;
   u.lang="fr-FR";
   u.rate=0.85;
   u.pitch=1.05;
@@ -248,7 +232,9 @@ function lire(){
   speechSynthesis.speak(u);
 }
 
-afficherTexte();
+nouveauTexte();
+nouvelleCitation();
+nouveauPoeme();
 </script>
 
 </body>
