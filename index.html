@@ -149,7 +149,7 @@ footer{
     <h3 id="typeTexte"></h3>
     <div id="contenu"></div>
     <button onclick="nouveauTexte()">Nouveau texte</button>
-    <button onclick="lire()">Écouter</button>
+<button onclick="lire()">Écouter</button>
   </div>
 </section>
   
@@ -216,63 +216,99 @@ footer{
   © 2026 — Aurore des Mots
 </footer>
 
-<script>
-const citations=[
-"Tu n’es pas en retard, tu es en chemin. — Anonyme",
-"La douceur est une force silencieuse. — Anonyme",
-"Aujourd’hui suffit. — Proverbe",
-"Même lentement, tu avances. — Anonyme",
-"Ce que tu ressens a le droit d’exister. — Anonyme"
+  <script>
+/* =========================
+   TEXTES
+========================= */
+
+const citations = [
+  "Tu n’es pas en retard, tu es en chemin. — Anonyme",
+  "La douceur est une force silencieuse. — Anonyme",
+  "Aujourd’hui suffit. — Proverbe",
+  "Même lentement, tu avances. — Anonyme",
+  "Ce que tu ressens a le droit d’exister. — Anonyme"
 ];
 
-const poemes=[
-"Respire.\nLe monde n’attend rien de toi\nsinon ta présence. — Anonyme",
-"La nuit rend\nce que le jour disperse. — Anonyme",
-"Entre deux pensées\nil y a déjà la paix. — Anonyme",
-"Tu continues\nmême quand tu doutes,\net c’est immense. — Anonyme",
-"Le silence\nn’est pas un vide\nmais un refuge. — Anonyme"
+const poemes = [
+  "Respire.\nLe monde n’attend rien de toi\nsinon ta présence. — Anonyme",
+  "La nuit rend\nce que le jour disperse. — Anonyme",
+  "Entre deux pensées\nil y a déjà la paix. — Anonyme",
+  "Tu continues\nmême quand tu doutes,\net c’est immense. — Anonyme",
+  "Le silence\nn’est pas un vide\nmais un refuge. — Anonyme"
 ];
 
-const typeEl=document.getElementById("typeTexte");
-const contenuEl=document.getElementById("contenu");
+/* =========================
+   TEXTE DU MOMENT
+========================= */
 
-function afficherTexte(){
-  const citation=Math.random()<0.5;
-  typeEl.textContent=citation?"Citation inspirante":"Poème";
-  contenuEl.textContent=citation
-    ?citations[Math.floor(Math.random()*citations.length)]
-    :poemes[Math.floor(Math.random()*poemes.length)];
+const typeEl = document.getElementById("typeTexte");
+const contenuEl = document.getElementById("contenu");
+
+function afficherTexteMoment() {
+  const estCitation = Math.random() < 0.5;
+  typeEl.textContent = estCitation ? "Citation inspirante" : "Poème";
+  contenuEl.textContent = estCitation
+    ? citations[Math.floor(Math.random() * citations.length)]
+    : poemes[Math.floor(Math.random() * poemes.length)];
 }
 
-function nouveauTexte(){
+function nouveauTexte() {
   speechSynthesis.cancel();
-  afficherTexte();
+  afficherTexteMoment();
 }
 
-let voixDouce=null;
+/* =========================
+   BLOCS SÉPARÉS
+========================= */
 
-function chargerVoix(){
-  const voix=speechSynthesis.getVoices();
-  voixDouce=
-    voix.find(v=>v.lang.startsWith("fr")&&v.name.includes("Google"))||
-    voix.find(v=>v.lang.startsWith("fr"))||
+function changerCitation() {
+  const el = document.getElementById("citationTexte");
+  if (!el) return;
+  el.textContent =
+    citations[Math.floor(Math.random() * citations.length)];
+}
+
+function changerPoeme() {
+  const el = document.getElementById("poemeTexte");
+  if (!el) return;
+  el.textContent =
+    poemes[Math.floor(Math.random() * poemes.length)];
+}
+
+/* =========================
+   VOIX DOUCE
+========================= */
+
+let voixDouce = null;
+
+function chargerVoix() {
+  const voix = speechSynthesis.getVoices();
+  voixDouce =
+    voix.find(v => v.lang.startsWith("fr") && v.name.includes("Google")) ||
+    voix.find(v => v.lang.startsWith("fr")) ||
     voix[0];
 }
 
-speechSynthesis.onvoiceschanged=chargerVoix;
+speechSynthesis.onvoiceschanged = chargerVoix;
 
-function lire(){
-  if(!voixDouce) chargerVoix();
-  const u=new SpeechSynthesisUtterance(contenuEl.textContent);
-  u.voice=voixDouce;
-  u.lang="fr-FR";
-  u.rate=0.82;
-  u.pitch=1.05;
+function lire() {
+  if (!voixDouce) chargerVoix();
+  const u = new SpeechSynthesisUtterance(contenuEl.textContent);
+  u.voice = voixDouce;
+  u.lang = "fr-FR";
+  u.rate = 0.82;
+  u.pitch = 1.05;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
 }
 
-afficherTexte();
+/* =========================
+   INITIALISATION
+========================= */
+
+afficherTexteMoment();
+changerCitation();
+changerPoeme();
 </script>
 
 </body>
