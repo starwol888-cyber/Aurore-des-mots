@@ -18,7 +18,6 @@
   --brume:#9FB7C3;
 }
 
-/* 🌌 NUIT ÉTOILÉE GALACTIQUE */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
@@ -138,17 +137,6 @@ footer{
 </section>
 
 <section>
-  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
-  <div class="card">
-    <p>
-      Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
-      Chaque citation ou poème est une pause consciente, un souffle, un rappel que tu
-      peux avancer à ton rythme, sans pression.
-    </p>
-  </div>
-</section>
-
-<section>
   <h2>✨ Citations inspirantes</h2>
   <div class="card">
     <p id="citationTexte"></p>
@@ -163,31 +151,6 @@ footer{
     <p id="poemeTexte" style="white-space:pre-line;"></p>
     <button onclick="changerPoeme()">Nouveau poème</button>
     <button onclick="lirePoeme()">Écouter</button>
-  </div>
-</section>
-
-<section>
-  <h2>💎 Versions de l’application</h2>
-  <div class="card">
-    <p><strong>Version gratuite</strong><br>
-      • Texte quotidien aléatoire<br>
-      • Lecture vocale<br>
-      • Accès français
-    </p>
-    <p><strong>Version premium</strong><br>
-      • Textes exclusifs<br>
-      • Choix de la voix<br>
-      • Français + Anglais<br>
-      • Aucune publicité
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>📱 Télécharger l’application</h2>
-  <div class="card" style="text-align:center;">
-    <p>Scanne le QR code pour accéder à l’application dès sa sortie.</p>
-    <img src="qr-app.png" alt="QR code application Aurore des Mots" class="qr">
   </div>
 </section>
 
@@ -238,30 +201,38 @@ function changerPoeme(){
   poemeEl.textContent=poemes[Math.floor(Math.random()*poemes.length)];
 }
 
+/* 🎙️ VOIX FÉMININE DOUCE & NATURELLE */
 let voixDouce=null;
+
 function chargerVoix(){
   const voix=speechSynthesis.getVoices();
-  voixDouce=voix.find(v=>v.lang.startsWith("fr"))||voix[0];
-}
-speechSynthesis.onvoiceschanged=chargerVoix;
 
-function lireTexteMoment(){
-  parler(contenuEl.textContent);
+  voixDouce = voix.find(v =>
+    v.lang === "fr-FR" &&
+    (
+      v.name.toLowerCase().includes("female") ||
+      v.name.toLowerCase().includes("femme") ||
+      v.name.toLowerCase().includes("google") ||
+      v.name.toLowerCase().includes("audrey") ||
+      v.name.toLowerCase().includes("julie")
+    )
+  ) || voix.find(v => v.lang === "fr-FR") || voix[0];
 }
-function lireCitation(){
-  parler(citationEl.textContent);
-}
-function lirePoeme(){
-  parler(poemeEl.textContent);
-}
+
+speechSynthesis.onvoiceschanged = chargerVoix;
+
+function lireTexteMoment(){ parler(contenuEl.textContent); }
+function lireCitation(){ parler(citationEl.textContent); }
+function lirePoeme(){ parler(poemeEl.textContent); }
 
 function parler(texte){
   if(!voixDouce) chargerVoix();
-  const u=new SpeechSynthesisUtterance(texte);
-  u.voice=voixDouce;
-  u.lang="fr-FR";
-  u.rate=0.82;
-  u.pitch=1.05;
+  const u = new SpeechSynthesisUtterance(texte);
+  u.voice = voixDouce;
+  u.lang = "fr-FR";
+  u.rate = 0.85;   // naturel
+  u.pitch = 1.15;  // féminin doux
+  u.volume = 1;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
 }
