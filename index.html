@@ -18,19 +18,30 @@
   --brume:#9FB7C3;
 }
 
+/* 🌌 NUIT ÉTOILÉE BIEN VISIBLE */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   color:var(--etoile);
   line-height:1.7;
   background:
-    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent 40%),
-    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.35), transparent 40%),
-    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.25), transparent 40%),
-    radial-gradient(2px 2px at 15% 60%, rgba(201,183,255,0.35), transparent 50%),
+    /* ⭐ ÉTOILES BRILLANTES */
+    radial-gradient(2px 2px at 10% 15%, rgba(255,255,255,0.9), transparent 40%),
+    radial-gradient(1.5px 1.5px at 25% 40%, rgba(255,255,255,0.8), transparent 40%),
+    radial-gradient(2px 2px at 40% 20%, rgba(255,255,255,0.85), transparent 40%),
+    radial-gradient(1px 1px at 55% 65%, rgba(255,255,255,0.7), transparent 40%),
+    radial-gradient(2px 2px at 70% 30%, rgba(201,183,255,0.9), transparent 45%),
+    radial-gradient(1.5px 1.5px at 85% 55%, rgba(255,255,255,0.8), transparent 40%),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.6), transparent 40%),
+    radial-gradient(2px 2px at 90% 10%, rgba(201,183,255,0.85), transparent 45%),
+
+    /* 🌫️ VOIE LACTÉE DOUCE */
+    radial-gradient(circle at 50% 30%, rgba(201,183,255,0.08), transparent 60%),
+
+    /* 🌌 DÉGRADÉ GALACTIQUE */
     linear-gradient(
       180deg,
-      #243F4A 0%,
+      #2F5568 0%,
       #1F4E5F 25%,
       #2A2359 50%,
       #120A1F 75%,
@@ -165,7 +176,6 @@ footer{
   </div>
 </section>
 
-<!-- ✅ SECTION QR CODE RÉINTÉGRÉE -->
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
@@ -221,27 +231,12 @@ function changerPoeme(){
   poemeEl.textContent=poemes[Math.floor(Math.random()*poemes.length)];
 }
 
-/* 🎙️ VOIX DOUCE & FÉMININE */
 let voixDouce=null;
-
 function chargerVoix(){
   const voix=speechSynthesis.getVoices();
-  voixDouce =
-    voix.find(v =>
-      v.lang === "fr-FR" &&
-      (
-        v.name.toLowerCase().includes("female") ||
-        v.name.toLowerCase().includes("femme") ||
-        v.name.toLowerCase().includes("audrey") ||
-        v.name.toLowerCase().includes("julie") ||
-        v.name.toLowerCase().includes("google")
-      )
-    )
-    || voix.find(v => v.lang === "fr-FR")
-    || voix[0];
+  voixDouce=voix.find(v=>v.lang==="fr-FR")||voix[0];
 }
-
-speechSynthesis.onvoiceschanged = chargerVoix;
+speechSynthesis.onvoiceschanged=chargerVoix;
 
 function lireTexteMoment(){ parler(contenuEl.textContent); }
 function lireCitation(){ parler(citationEl.textContent); }
@@ -250,14 +245,12 @@ function lirePoeme(){ parler(poemeEl.textContent); }
 function parler(texte){
   if(!texte) return;
   if(!voixDouce) chargerVoix();
-
   const u=new SpeechSynthesisUtterance(texte);
   u.voice=voixDouce;
   u.lang="fr-FR";
   u.rate=0.78;
   u.pitch=1.18;
   u.volume=0.95;
-
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
 }
