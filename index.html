@@ -153,6 +153,17 @@ footer{
   </div>
 </section>
   
+  <section>
+  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
+  <div class="card">
+    <p>
+      Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
+      Chaque citation ou poème est une pause consciente, un souffle, un rappel que tu
+      peux avancer à ton rythme, sans pression.
+    </p>
+  </div>
+  </section>
+  
 <section>
   <h2>✨ Citations inspirantes</h2>
   <div class="card">
@@ -160,8 +171,7 @@ footer{
     <p class="texte-inspirant" id="citationTexte"></p>
 
     <button onclick="nouvelleCitation()">Nouvelle citation</button>
-<button onclick="lire()">Écouter</button>
-    
+<button o)">Éco
   </div>
 </section>
   
@@ -173,20 +183,8 @@ footer{
 
     <button onclick="nouveauPoeme()">Nouveau poème</button>
 <button onclick="lire()">Écouter</button>
-    
   </div>
   </section>
-  
-<section>
-  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
-  <div class="card">
-    <p>
-      Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
-      Chaque citation ou poème est une pause consciente, un souffle, un rappel que tu
-      peux avancer à ton rythme, sans pression.
-    </p>
-  </div>
-</section>
 
 <section>
   <h2>💎 Versions de l’application</h2>
@@ -264,6 +262,7 @@ function nouveauTexte() {
 ========================= */
 
 function changerCitation() {
+  speechSynthesis.cancel();
   const el = document.getElementById("citationTexte");
   if (!el) return;
   el.textContent =
@@ -271,6 +270,7 @@ function changerCitation() {
 }
 
 function changerPoeme() {
+  speechSynthesis.cancel();
   const el = document.getElementById("poemeTexte");
   if (!el) return;
   el.textContent =
