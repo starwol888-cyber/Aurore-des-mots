@@ -29,45 +29,21 @@ body{
   position:relative;
 }
 
-/* 🌌 Étoiles fixes */
+/* 🌌 Nuit étoilée douce (statique) */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(234,230,255,0.8) 1px, transparent 2px),
-    radial-gradient(circle at 80% 40%, rgba(201,183,255,0.6) 1px, transparent 2px),
-    radial-gradient(circle at 50% 70%, rgba(234,230,255,0.7) 1px, transparent 2px),
-    radial-gradient(circle at 10% 80%, rgba(159,183,195,0.5) 1px, transparent 2px);
+    radial-gradient(circle at 15% 20%, rgba(234,230,255,0.8) 1px, transparent 2px),
+    radial-gradient(circle at 35% 60%, rgba(201,183,255,0.6) 1px, transparent 2px),
+    radial-gradient(circle at 70% 30%, rgba(234,230,255,0.7) 1px, transparent 2px),
+    radial-gradient(circle at 85% 75%, rgba(159,183,195,0.5) 1px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(234,230,255,0.6) 1px, transparent 2px);
   background-size:300px 300px;
   opacity:0.35;
   pointer-events:none;
-  z-index:-2;
-}
-
-/* 🌠 Étoiles filantes */
-.shooting-star{
-  position:fixed;
-  top:-10%;
-  width:2px;
-  height:80px;
-  background:linear-gradient(180deg, rgba(234,230,255,0.8), transparent);
-  transform:rotate(45deg);
-  opacity:0.8;
-  animation:shoot 3s linear forwards;
-  pointer-events:none;
   z-index:-1;
-}
-
-@keyframes shoot{
-  from{
-    transform:translate(0,0) rotate(45deg);
-    opacity:1;
-  }
-  to{
-    transform:translate(-400px,600px) rotate(45deg);
-    opacity:0;
-  }
 }
 
 /* 🌿 Layout */
@@ -174,8 +150,8 @@ footer{
   <div class="card">
     <p>
       Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
-      Chaque citation ou poème est une pause consciente, un souffle,
-      un rappel que tu peux avancer à ton rythme.
+      Chaque citation ou poème est une pause consciente,
+      un souffle discret dans le tumulte du quotidien.
     </p>
   </div>
 </section>
@@ -189,10 +165,10 @@ footer{
       • Accès français
     </p>
     <p><strong>Version premium</strong><br>
-      • Poèmes exclusifs<br>
+      • Poèmes exclusifs et approfondis<br>
       • Choix de la voix<br>
-      • Mode nuit profond<br>
-      • Multilingue<br>
+      • Mode nuit immersif<br>
+      • Français + Anglais<br>
       • Sans publicité
     </p>
   </div>
@@ -248,8 +224,7 @@ let voixDouce=null;
 
 function chargerVoix(){
   const voix=speechSynthesis.getVoices();
-  voixDouce=
-    voix.find(v=>v.lang.startsWith("fr")) || voix[0];
+  voixDouce=voix.find(v=>v.lang.startsWith("fr"))||voix[0];
 }
 
 speechSynthesis.onvoiceschanged=chargerVoix;
@@ -266,21 +241,6 @@ function lire(){
 }
 
 afficherTexte();
-
-/* 🌠 Étoiles filantes */
-function creerEtoileFilante(){
-  const star=document.createElement("div");
-  star.className="shooting-star";
-  star.style.left=Math.random()*100+"%";
-  document.body.appendChild(star);
-  setTimeout(()=>star.remove(),3000);
-}
-
-setInterval(()=>{
-  if(Math.random()<0.35){
-    creerEtoileFilante();
-  }
-},4000);
 </script>
 
 </body>
