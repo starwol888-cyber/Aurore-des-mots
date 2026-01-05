@@ -6,19 +6,19 @@
 
 <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes modernes et apaisants.">
+<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes originaux, dans une atmosphère nocturne apaisée.">
 <meta name="theme-color" content="#0E1A1F">
 
 <style>
 :root{
-  --nuit:#0B1318;
+  --nuit:#0E1A1F;
   --bleu-canard:#1F4E5F;
   --lila:#C9B7FF;
-  --etoile:#F3EEFF;
-  --brume:#A7C0CC;
+  --etoile:#EAE6FF;
+  --brume:#9FB7C3;
 }
 
-/* 🌌 NUIT ÉTOILÉE RENFORCÉE */
+/* 🌙 AMBIANCE NUIT ÉTOILÉE DOUCE */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
@@ -26,34 +26,28 @@ body{
   line-height:1.7;
 
   background:
-    /* étoiles fines */
-    radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px),
-    /* étoiles moyennes */
-    radial-gradient(circle, rgba(255,255,255,0.25) 1.5px, transparent 1.5px),
-    /* halo voie lactée */
-    radial-gradient(circle at 50% 30%, rgba(201,183,255,0.18), transparent 60%),
-    /* ciel */
-    linear-gradient(to bottom, var(--bleu-canard), var(--nuit) 75%);
+    radial-gradient(circle, rgba(255,255,255,0.14) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px),
+    radial-gradient(circle at top, var(--bleu-canard), var(--nuit) 70%);
 
   background-size:
-    2px 2px,
-    4px 4px,
-    100% 100%,
+    3px 3px,
+    6px 6px,
     100% 100%;
 
   background-attachment: fixed;
 }
 
-/* 🌙 STRUCTURE */
+/* STRUCTURE */
 header{
   text-align:center;
-  padding:70px 24px 50px;
+  padding:60px 24px 40px;
 }
 
 header img{
   width:160px;
-  margin-bottom:26px;
-  filter:drop-shadow(0 0 35px rgba(201,183,255,.8));
+  margin-bottom:24px;
+  filter:drop-shadow(0 0 25px rgba(201,183,255,.5));
 }
 
 header h1{
@@ -71,7 +65,7 @@ header p{
 section{
   max-width:900px;
   margin:0 auto;
-  padding:70px 24px;
+  padding:64px 24px;
 }
 
 h2{
@@ -80,28 +74,27 @@ h2{
 }
 
 .card{
-  background:rgba(255,255,255,.06);
-  border-radius:26px;
-  padding:36px;
+  background:rgba(255,255,255,.05);
+  border-radius:24px;
+  padding:32px;
   margin-top:24px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 40px rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);
 }
 
 .contenu{
   white-space:pre-line;
   font-size:20px;
-  margin-top:16px;
+  margin:20px 0;
 }
 
-/* 🎧 BOUTONS */
+/* BOUTONS */
 button{
   background:var(--lila);
-  color:#0B1318;
+  color:#0E1A1F;
   border:none;
   border-radius:30px;
-  padding:14px 28px;
-  margin-top:20px;
+  padding:14px 26px;
+  margin-top:12px;
   font-weight:600;
   cursor:pointer;
 }
@@ -109,13 +102,13 @@ button{
 button:hover{ opacity:.9; }
 
 .qr{
-  width:180px;
-  margin-top:26px;
+  width:160px;
+  margin-top:20px;
 }
 
 footer{
   text-align:center;
-  padding:50px 20px;
+  padding:40px 20px;
   color:var(--brume);
   font-size:14px;
 }
@@ -128,9 +121,8 @@ footer{
   <img src="logo_aurore_2Mo.png" alt="Logo Aurore des Mots">
   <h1>Aurore des Mots</h1>
   <p>
-    Des mots pour te réveiller.<br>
-    Des silences pour t’apaiser.<br>
-    Une présence douce, sous un ciel étoilé.
+    Des mots pour ralentir.<br>
+    Une présence douce, sous la nuit étoilée.
   </p>
 </header>
 
@@ -158,15 +150,33 @@ footer{
   </div>
 </section>
 
+<!-- 🌱 NOUVEL ESPACE — CE QUE L’APPLICATION APPORTE -->
+<section>
+  <h2>🌱 Ce que l’application peut t’apporter</h2>
+  <div class="card">
+    <p>
+      Aurore des Mots est un refuge discret dans le quotidien.
+      Elle t’offre chaque jour des mots choisis pour t’aider à
+      ralentir, respirer, retrouver confiance et clarté.
+    </p>
+    <p>
+      Que ce soit au réveil, dans une pause ou avant de dormir,
+      l’application t’accompagne avec douceur, sans pression,
+      simplement pour être là.
+    </p>
+    <p>
+      Des citations, des poèmes, des textes du moment…
+      Une présence calme, fidèle, qui s’adapte à ton rythme.
+    </p>
+  </div>
+</section>
+
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
-    <p>
-      Emporte ces nuits étoilées partout avec toi.<br>
-      Une citation, un poème, chaque jour.
-    </p>
+    <p>Emporte ces instants avec toi, partout.</p>
     <img src="qr-app.png" alt="QR code application" class="qr">
-    <p style="font-size:14px; color:var(--brume);">
+    <p style="font-size:14px;color:var(--brume);">
       Disponible prochainement sur mobile
     </p>
   </div>
@@ -178,21 +188,21 @@ footer{
 
 <script>
 const textes=[
-"Tu peux t’arrêter ici. Le ciel veille encore. — Aurore des Mots",
-"Même dans la nuit la plus calme, quelque chose veille sur toi. — Aurore des Mots",
-"Ce moment n’attend rien de toi, seulement ta présence. — Aurore des Mots"
+"Tu peux ralentir ici. La nuit ne te presse pas. — Aurore des Mots",
+"Ce moment existe pour toi, sans attente. — Aurore des Mots",
+"Même dans le calme, tu avances. — Aurore des Mots"
 ];
 
 const citations=[
-"L’espoir brille plus fort quand tout ralentit. — Aurore des Mots",
-"La douceur est une lumière qui ne s’éteint pas. — Aurore des Mots",
-"Les étoiles existent même quand on ne les voit pas. — Proverbe anonyme"
+"La douceur est une force invisible. — Aurore des Mots",
+"L’espoir respire dans les silences. — Aurore des Mots",
+"Après la nuit, la clarté revient toujours. — Proverbe anonyme"
 ];
 
 const poemes=[
-"Sous le ciel calme\nle cœur apprend\nà respirer.\n— Aurore des Mots",
-"La nuit\nne prend rien,\nelle enveloppe.\n— Aurore des Mots",
-"Quand tout se tait,\nles étoiles parlent.\n— Proverbe anonyme"
+"Sous la nuit calme\nle cœur se repose.\n— Aurore des Mots",
+"Quand tout se tait,\nla paix s’approche.\n— Aurore des Mots",
+"La nuit garde\nce que le jour oublie.\n— Proverbe anonyme"
 ];
 
 function alea(tab){
