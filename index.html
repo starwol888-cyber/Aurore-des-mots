@@ -24,7 +24,6 @@ body{
   color:var(--etoile);
   line-height:1.7;
 
-  /* 🌌 NUIT ÉTOILÉE DENSE & VISIBLE */
   background:
     radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.9), transparent 60%),
     radial-gradient(1.5px 1.5px at 30% 70%, rgba(255,255,255,.8), transparent 60%),
@@ -174,6 +173,27 @@ footer{
   </div>
 </section>
 
+<!-- ✅ NOUVELLE SECTION : VERSIONS DE L’APPLICATION -->
+<section>
+  <h2>💎 Versions de l’application</h2>
+  <div class="card">
+    <p><strong>🌿 Version classique (gratuite)</strong><br>
+      • Texte quotidien aléatoire<br>
+      • Citations et poèmes inspirants<br>
+      • Lecture vocale douce en français<br>
+      • Accès libre sans inscription
+    </p>
+
+    <p style="margin-top:24px;"><strong>✨ Version premium</strong><br>
+      • Textes exclusifs et inédits<br>
+      • Choix et personnalisation de la voix<br>
+      • Français + Anglais<br>
+      • Ambiances sonores apaisantes<br>
+      • Aucune publicité
+    </p>
+  </div>
+</section>
+
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
@@ -229,13 +249,11 @@ function changerPoeme(){
   poemeEl.textContent=poemes[Math.floor(Math.random()*poemes.length)];
 }
 
-/* 🎙️ VOIX DOUCE & FÉMININE */
 let voixDouce=null;
 
 function chargerVoix(){
   const voix=speechSynthesis.getVoices();
-  voixDouce =
-    voix.find(v => v.lang==="fr-FR") || voix[0];
+  voixDouce = voix.find(v => v.lang==="fr-FR") || voix[0];
 }
 
 speechSynthesis.onvoiceschanged=chargerVoix;
