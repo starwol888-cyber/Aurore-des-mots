@@ -6,7 +6,7 @@
 
 <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes originaux, lus à voix haute, pour apaiser l’esprit et nourrir l’âme.">
+<meta name="description" content="Citations et poèmes modernes, lus à voix haute, pour ralentir, respirer et se recentrer.">
 <meta name="theme-color" content="#0E1A1F">
 
 <style>
@@ -18,44 +18,23 @@
   --brume:#9FB7C3;
 }
 
-/* 🌌 Base */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:radial-gradient(circle at top,var(--bleu-canard),var(--nuit) 70%);
+  background:radial-gradient(circle at top,var(--bleu-canard),var(--nuit) 75%);
   color:var(--etoile);
   line-height:1.7;
-  overflow-x:hidden;
-  position:relative;
 }
 
-/* 🌌 Nuit étoilée douce (statique) */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(234,230,255,0.8) 1px, transparent 2px),
-    radial-gradient(circle at 35% 60%, rgba(201,183,255,0.6) 1px, transparent 2px),
-    radial-gradient(circle at 70% 30%, rgba(234,230,255,0.7) 1px, transparent 2px),
-    radial-gradient(circle at 85% 75%, rgba(159,183,195,0.5) 1px, transparent 2px),
-    radial-gradient(circle at 50% 50%, rgba(234,230,255,0.6) 1px, transparent 2px);
-  background-size:300px 300px;
-  opacity:0.35;
-  pointer-events:none;
-  z-index:-1;
-}
-
-/* 🌿 Layout */
 header{
   text-align:center;
-  padding:60px 24px 40px;
+  padding:70px 24px 40px;
 }
 
 header img{
   width:160px;
   margin-bottom:24px;
-  filter:drop-shadow(0 0 30px rgba(201,183,255,.6));
+  filter:drop-shadow(0 0 25px rgba(201,183,255,.5));
 }
 
 header h1{
@@ -82,7 +61,7 @@ h2{
 }
 
 .card{
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.05);
   border-radius:24px;
   padding:32px;
   margin-top:24px;
@@ -106,17 +85,14 @@ button{
   cursor:pointer;
 }
 
-button:hover{ opacity:.9 }
-
 .qr{
   width:160px;
-  max-width:100%;
   margin-top:20px;
 }
 
 footer{
   text-align:center;
-  padding:40px 20px;
+  padding:50px 20px;
   color:var(--brume);
   font-size:14px;
 }
@@ -140,7 +116,7 @@ footer{
   <div class="card">
     <h3 id="typeTexte"></h3>
     <div id="contenu"></div>
-    <button onclick="nouveauTexte()">Nouveau texte</button>
+    <button onclick="nouveauTexte()">Changer de texte</button>
     <button onclick="lire()">Écouter</button>
   </div>
 </section>
@@ -149,27 +125,25 @@ footer{
   <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
   <div class="card">
     <p>
-      Aurore des Mots t’aide à ralentir, à te recentrer et à nourrir ton monde intérieur.
-      Chaque citation ou poème est une pause consciente,
-      un souffle discret dans le tumulte du quotidien.
+      Aurore des Mots t’aide à ralentir, respirer et te reconnecter à l’essentiel.
+      Chaque texte est une pause, un instant de calme, un espace pour te retrouver.
     </p>
   </div>
 </section>
 
 <section>
-  <h2>💎 Versions de l’application</h2>
+  <h2>💎 Versions</h2>
   <div class="card">
-    <p><strong>Version gratuite</strong><br>
-      • Texte quotidien aléatoire<br>
+    <p><strong>Gratuite</strong><br>
+      • Texte aléatoire<br>
       • Lecture vocale<br>
-      • Accès français
+      • Français
     </p>
-    <p><strong>Version premium</strong><br>
-      • Poèmes exclusifs et approfondis<br>
-      • Choix de la voix<br>
-      • Mode nuit immersif<br>
-      • Français + Anglais<br>
-      • Sans publicité
+    <p><strong>Premium</strong><br>
+      • Textes exclusifs<br>
+      • Voix améliorées<br>
+      • Français & Anglais<br>
+      • Aucune publicité
     </p>
   </div>
 </section>
@@ -177,31 +151,30 @@ footer{
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
-    <p>Scanne le QR code pour accéder à l’application dès sa sortie.</p>
+    <p>Scanne le QR code pour accéder à l’application.</p>
     <img src="qr-app.png" alt="QR code Aurore des Mots" class="qr">
   </div>
 </section>
 
 <footer>
-  © 2026 — Aurore des Mots
+  © 2026 — Aurore des Mots  
 </footer>
 
 <script>
-/* 📜 Textes */
 const citations=[
-"Tu n’es pas en retard, tu es en chemin.",
-"La douceur est une force silencieuse.",
-"Aujourd’hui suffit.",
-"Même lentement, tu avances.",
-"Ce que tu ressens a le droit d’exister."
+"Tu n’as rien à prouver. Être là suffit déjà.",
+"Avancer doucement est une forme de courage.",
+"La douceur n’est pas une pause, c’est un choix.",
+"Même dans le calme, tu construis quelque chose.",
+"Ce moment est à toi. Rien d’autre n’est urgent."
 ];
 
 const poemes=[
-"Respire.\nLe monde n’attend rien de toi\nsinon ta présence.",
-"La nuit rend\nce que le jour disperse.",
-"Entre deux pensées\nil y a déjà la paix.",
-"Tu continues\nmême quand tu doutes,\net c’est immense.",
-"Le silence\nn’est pas un vide\nmais un refuge."
+"Respire.\nLa nuit ne te demande rien,\nelle t’accueille.",
+"Entre deux pensées,\nil existe un espace\noù tout peut se déposer.",
+"Tu avances encore,\nmême quand tu doutes,\net c’est déjà immense.",
+"Le silence n’est pas vide.\nIl est plein de ce que tu ressens.",
+"Ralentir,\nce n’est pas fuir,\nc’est écouter."
 ];
 
 const typeEl=document.getElementById("typeTexte");
@@ -220,21 +193,10 @@ function nouveauTexte(){
   afficherTexte();
 }
 
-let voixDouce=null;
-
-function chargerVoix(){
-  const voix=speechSynthesis.getVoices();
-  voixDouce=voix.find(v=>v.lang.startsWith("fr"))||voix[0];
-}
-
-speechSynthesis.onvoiceschanged=chargerVoix;
-
 function lire(){
-  if(!voixDouce) chargerVoix();
   const u=new SpeechSynthesisUtterance(contenuEl.textContent);
-  u.voice=voixDouce;
   u.lang="fr-FR";
-  u.rate=0.82;
+  u.rate=0.85;
   u.pitch=1.05;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
