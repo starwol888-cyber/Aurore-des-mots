@@ -14,29 +14,40 @@
   --nuit:#0E1A1F;
   --bleu-canard:#1F4E5F;
   --lila:#C9B7FF;
-  --etoile:#EAE6FF;
+  --etoile:#FFFFFF;
   --brume:#9FB7C3;
 }
 
+/* 🌌 FOND GALACTIQUE + ÉTOILES */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   color:var(--etoile);
   line-height:1.7;
   background:
-    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent 40%),
-    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.35), transparent 40%),
-    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.25), transparent 40%),
-    radial-gradient(2px 2px at 15% 60%, rgba(201,183,255,0.35), transparent 50%),
+    radial-gradient(1px 1px at 5% 10%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 15% 40%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 50% 20%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 65% 60%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 80% 30%, rgba(201,183,255,0.9), transparent),
+    radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.7), transparent),
     linear-gradient(
       180deg,
       #243F4A 0%,
-      #1F4E5F 25%,
-      #2A2359 50%,
+      #1F4E5F 30%,
+      #2A2359 55%,
       #120A1F 75%,
       #07030F 100%
     );
   background-attachment: fixed;
+  animation: ciel 12s ease-in-out infinite alternate;
+}
+
+/* ✨ SCINTILLEMENT */
+@keyframes ciel{
+  from{ filter:brightness(1); }
+  to{ filter:brightness(1.15); }
 }
 
 header{
@@ -47,7 +58,7 @@ header{
 header img{
   width:160px;
   margin-bottom:24px;
-  filter:drop-shadow(0 0 30px rgba(201,183,255,.6));
+  filter:drop-shadow(0 0 35px rgba(201,183,255,.8));
 }
 
 header h1{
@@ -72,11 +83,11 @@ h2{
 }
 
 .card{
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.05);
   border-radius:24px;
   padding:32px;
   margin-top:24px;
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(10px);
 }
 
 #contenu{
@@ -98,11 +109,6 @@ button{
 
 button:hover{
   opacity:.9;
-}
-
-.qr{
-  width:160px;
-  margin-top:20px;
 }
 
 footer{
@@ -206,36 +212,24 @@ let voixDouce=null;
 
 function chargerVoix(){
   const voix=speechSynthesis.getVoices();
-
-  voixDouce = voix.find(v =>
-    v.lang === "fr-FR" &&
-    (
-      v.name.toLowerCase().includes("female") ||
-      v.name.toLowerCase().includes("femme") ||
-      v.name.toLowerCase().includes("google") ||
-      v.name.toLowerCase().includes("audrey") ||
-      v.name.toLowerCase().includes("julie")
-    )
-  ) || voix.find(v => v.lang === "fr-FR") || voix[0];
+  voixDouce = voix.find(v => v.lang==="fr-FR") || voix[0];
 }
+speechSynthesis.onvoiceschanged=chargerVoix;
 
-speechSynthesis.onvoiceschanged = chargerVoix;
+function parler(texte){
+  if(!voixDouce) chargerVoix();
+  const u=new SpeechSynthesisUtterance(texte);
+  u.voice=voixDouce;
+  u.lang="fr-FR";
+  u.rate=0.85;
+  u.pitch=1.15;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
 
 function lireTexteMoment(){ parler(contenuEl.textContent); }
 function lireCitation(){ parler(citationEl.textContent); }
 function lirePoeme(){ parler(poemeEl.textContent); }
-
-function parler(texte){
-  if(!voixDouce) chargerVoix();
-  const u = new SpeechSynthesisUtterance(texte);
-  u.voice = voixDouce;
-  u.lang = "fr-FR";
-  u.rate = 0.85;   // naturel
-  u.pitch = 1.15;  // féminin doux
-  u.volume = 1;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-}
 
 afficherTexteMoment();
 changerCitation();
