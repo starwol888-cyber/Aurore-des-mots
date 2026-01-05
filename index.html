@@ -6,7 +6,7 @@
 
 <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes inspirants, lus à voix haute, pour apaiser l’esprit et nourrir l’âme.">
+<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes modernes, originaux et apaisants.">
 <meta name="theme-color" content="#0E1A1F">
 
 <style>
@@ -18,13 +18,16 @@
   --brume:#9FB7C3;
 }
 
+/* 🌌 FOND NUIT ÉTOILÉE */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:
-    radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 40%),
-    radial-gradient(circle at bottom, rgba(255,255,255,0.03), transparent 50%),
+    radial-gradient(circle at top, rgba(255,255,255,0.08) 1px, transparent 1px),
+    radial-gradient(circle at bottom, rgba(255,255,255,0.05) 1px, transparent 1px),
     radial-gradient(circle at top, var(--bleu-canard), var(--nuit) 70%);
+  background-size: 3px 3px, 4px 4px, cover;
+  background-attachment: fixed;
   color:var(--etoile);
   line-height:1.7;
 }
@@ -64,17 +67,17 @@ h2{
 }
 
 .card{
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.05);
   border-radius:24px;
   padding:32px;
   margin-top:24px;
   backdrop-filter:blur(8px);
 }
 
-.texte{
+.contenu{
   white-space:pre-line;
   font-size:20px;
-  margin:24px 0;
+  margin-top:16px;
 }
 
 button{
@@ -83,18 +86,15 @@ button{
   border:none;
   border-radius:30px;
   padding:14px 26px;
-  margin:8px;
+  margin-top:16px;
   font-weight:600;
   cursor:pointer;
 }
 
-button:hover{
-  opacity:.9;
-}
+button:hover{ opacity:.9; }
 
 .qr{
   width:180px;
-  max-width:100%;
   margin-top:24px;
 }
 
@@ -119,61 +119,44 @@ footer{
   </p>
 </header>
 
-<!-- TEXTE DU MOMENT -->
+<!-- 🌿 TEXTE DU MOMENT -->
 <section>
   <h2>✨ Texte du moment</h2>
   <div class="card">
-    <div id="texteMoment" class="texte"></div>
-    <button onclick="nouveauTexte()">Changer</button>
+    <div id="texteMoment" class="contenu"></div>
     <button onclick="lire('texteMoment')">Écouter</button>
   </div>
 </section>
 
-<!-- CITATIONS -->
+<!-- 💬 CITATIONS -->
 <section>
-  <h2>💫 Citation inspirante</h2>
+  <h2>💬 Citation inspirante</h2>
   <div class="card">
-    <div id="citation" class="texte"></div>
-    <button onclick="nouvelleCitation()">Changer</button>
+    <div id="citation" class="contenu"></div>
     <button onclick="lire('citation')">Écouter</button>
   </div>
 </section>
 
-<!-- POÈMES -->
+<!-- 📝 POÈMES -->
 <section>
-  <h2>🌙 Poème</h2>
+  <h2>📝 Poème</h2>
   <div class="card">
-    <div id="poeme" class="texte"></div>
-    <button onclick="nouveauPoeme()">Changer</button>
+    <div id="poeme" class="contenu"></div>
     <button onclick="lire('poeme')">Écouter</button>
   </div>
 </section>
 
-<!-- APPORT -->
-<section>
-  <h2>🌱 Ce que t’apporte Aurore des Mots</h2>
-  <div class="card">
-    <p>
-      Aurore des Mots est un refuge discret dans le tumulte du quotidien.
-      Une invitation à ralentir, à ressentir, à te reconnecter à ce qui compte vraiment.
-      Quelques mots peuvent parfois suffire à éclairer une journée entière.
-    </p>
-  </div>
-</section>
-
-<!-- TÉLÉCHARGEMENT -->
+<!-- 📱 TÉLÉCHARGEMENT -->
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
     <p>
-      Reçois chaque jour une citation ou un poème directement sur ton téléphone,
-      même hors ligne. Une présence douce, toujours à portée de main.
+      Retrouve chaque jour ces mots directement sur ton téléphone,
+      même hors ligne.
     </p>
-
-    <img src="qr-app.png" alt="QR code application Aurore des Mots" class="qr">
-
-    <p style="font-size:14px;color:var(--brume);margin-top:16px;">
-      Application mobile disponible prochainement
+    <img src="qr-app.png" alt="QR code application" class="qr">
+    <p style="font-size:14px; color:var(--brume);">
+      Disponible prochainement sur mobile
     </p>
   </div>
 </section>
@@ -183,58 +166,45 @@ footer{
 </footer>
 
 <script>
-const textesMoment=[
-"Ce soir, laisse tomber ce qui pèse. Le ciel n’attend rien de toi.",
-"Tu n’as rien à prouver. Ta présence suffit.",
-"Parfois, ralentir est la décision la plus courageuse."
+const textes=[
+"Ce moment n’a rien à prouver. Il existe, et c’est suffisant. — Aurore des Mots",
+"Tu peux ralentir sans perdre ta place. — Aurore des Mots",
+"L’essentiel commence là où tu respires. — Aurore des Mots"
 ];
 
 const citations=[
-"La douceur est une force silencieuse. — Proverbe anonyme",
-"Chaque pas compte, même les plus lents. — Proverbe anonyme",
-"L’espoir commence là où la peur s’arrête. — Proverbe anonyme"
+"L’espoir n’est pas une attente, c’est une présence. — Aurore des Mots",
+"La douceur est un courage qui ne fait pas de bruit. — Aurore des Mots",
+"Chaque pas compte, même ceux que personne ne voit. — Proverbe anonyme"
 ];
 
 const poemes=[
-"Respire.\nMême la nuit prépare l’aube.\n— Poème anonyme",
-"Tu avances,\nmême quand tu doutes.\nEt c’est déjà immense.\n— Poème anonyme",
-"Laisse la vie\nte surprendre doucement.\n— Poème anonyme"
+"Respire.\nMême la nuit\nporte une promesse de lumière.\n— Aurore des Mots",
+"Tu avances\nsans toujours le sentir,\net pourtant tu avances.\n— Aurore des Mots",
+"Dans le silence\nnaît souvent\nce qui dure.\n— Proverbe anonyme"
 ];
 
-function aleatoire(tab){
+function alea(tab){
   return tab[Math.floor(Math.random()*tab.length)];
 }
 
-function nouveauTexte(){
-  document.getElementById("texteMoment").textContent=aleatoire(textesMoment);
-}
-
-function nouvelleCitation(){
-  document.getElementById("citation").textContent=aleatoire(citations);
-}
-
-function nouveauPoeme(){
-  document.getElementById("poeme").textContent=aleatoire(poemes);
-}
+document.getElementById("texteMoment").textContent = alea(textes);
+document.getElementById("citation").textContent = alea(citations);
+document.getElementById("poeme").textContent = alea(poemes);
 
 let voix=null;
 speechSynthesis.onvoiceschanged=()=>{
-  voix=speechSynthesis.getVoices().find(v=>v.lang.startsWith("fr")) || speechSynthesis.getVoices()[0];
+  voix=speechSynthesis.getVoices().find(v=>v.lang.startsWith("fr")) || null;
 };
 
 function lire(id){
   const u=new SpeechSynthesisUtterance(document.getElementById(id).textContent);
   u.voice=voix;
-  u.lang="fr-FR";
   u.rate=0.85;
   u.pitch=1.05;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
 }
-
-nouveauTexte();
-nouvelleCitation();
-nouveauPoeme();
 </script>
 
 </body>
