@@ -6,41 +6,54 @@
 
 <title>Aurore des Mots — Citations & Poèmes Quotidiens</title>
 
-<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes modernes, originaux et apaisants.">
+<meta name="description" content="Aurore des Mots t’accompagne chaque jour avec des citations et poèmes modernes et apaisants.">
 <meta name="theme-color" content="#0E1A1F">
 
 <style>
 :root{
-  --nuit:#0E1A1F;
+  --nuit:#0B1318;
   --bleu-canard:#1F4E5F;
   --lila:#C9B7FF;
-  --etoile:#EAE6FF;
-  --brume:#9FB7C3;
+  --etoile:#F3EEFF;
+  --brume:#A7C0CC;
 }
 
-/* 🌌 FOND NUIT ÉTOILÉE */
+/* 🌌 NUIT ÉTOILÉE RENFORCÉE */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.08) 1px, transparent 1px),
-    radial-gradient(circle at bottom, rgba(255,255,255,0.05) 1px, transparent 1px),
-    radial-gradient(circle at top, var(--bleu-canard), var(--nuit) 70%);
-  background-size: 3px 3px, 4px 4px, cover;
-  background-attachment: fixed;
   color:var(--etoile);
   line-height:1.7;
+
+  background:
+    /* étoiles fines */
+    radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px),
+    /* étoiles moyennes */
+    radial-gradient(circle, rgba(255,255,255,0.25) 1.5px, transparent 1.5px),
+    /* halo voie lactée */
+    radial-gradient(circle at 50% 30%, rgba(201,183,255,0.18), transparent 60%),
+    /* ciel */
+    linear-gradient(to bottom, var(--bleu-canard), var(--nuit) 75%);
+
+  background-size:
+    2px 2px,
+    4px 4px,
+    100% 100%,
+    100% 100%;
+
+  background-attachment: fixed;
 }
 
+/* 🌙 STRUCTURE */
 header{
   text-align:center;
-  padding:60px 24px 40px;
+  padding:70px 24px 50px;
 }
 
 header img{
   width:160px;
-  margin-bottom:24px;
-  filter:drop-shadow(0 0 30px rgba(201,183,255,.6));
+  margin-bottom:26px;
+  filter:drop-shadow(0 0 35px rgba(201,183,255,.8));
 }
 
 header h1{
@@ -58,7 +71,7 @@ header p{
 section{
   max-width:900px;
   margin:0 auto;
-  padding:64px 24px;
+  padding:70px 24px;
 }
 
 h2{
@@ -67,11 +80,12 @@ h2{
 }
 
 .card{
-  background:rgba(255,255,255,.05);
-  border-radius:24px;
-  padding:32px;
+  background:rgba(255,255,255,.06);
+  border-radius:26px;
+  padding:36px;
   margin-top:24px;
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 40px rgba(0,0,0,.25);
 }
 
 .contenu{
@@ -80,13 +94,14 @@ h2{
   margin-top:16px;
 }
 
+/* 🎧 BOUTONS */
 button{
   background:var(--lila);
-  color:#0E1A1F;
+  color:#0B1318;
   border:none;
   border-radius:30px;
-  padding:14px 26px;
-  margin-top:16px;
+  padding:14px 28px;
+  margin-top:20px;
   font-weight:600;
   cursor:pointer;
 }
@@ -95,12 +110,12 @@ button:hover{ opacity:.9; }
 
 .qr{
   width:180px;
-  margin-top:24px;
+  margin-top:26px;
 }
 
 footer{
   text-align:center;
-  padding:40px 20px;
+  padding:50px 20px;
   color:var(--brume);
   font-size:14px;
 }
@@ -115,11 +130,10 @@ footer{
   <p>
     Des mots pour te réveiller.<br>
     Des silences pour t’apaiser.<br>
-    Une présence douce, chaque jour.
+    Une présence douce, sous un ciel étoilé.
   </p>
 </header>
 
-<!-- 🌿 TEXTE DU MOMENT -->
 <section>
   <h2>✨ Texte du moment</h2>
   <div class="card">
@@ -128,7 +142,6 @@ footer{
   </div>
 </section>
 
-<!-- 💬 CITATIONS -->
 <section>
   <h2>💬 Citation inspirante</h2>
   <div class="card">
@@ -137,7 +150,6 @@ footer{
   </div>
 </section>
 
-<!-- 📝 POÈMES -->
 <section>
   <h2>📝 Poème</h2>
   <div class="card">
@@ -146,13 +158,12 @@ footer{
   </div>
 </section>
 
-<!-- 📱 TÉLÉCHARGEMENT -->
 <section>
   <h2>📱 Télécharger l’application</h2>
   <div class="card" style="text-align:center;">
     <p>
-      Retrouve chaque jour ces mots directement sur ton téléphone,
-      même hors ligne.
+      Emporte ces nuits étoilées partout avec toi.<br>
+      Une citation, un poème, chaque jour.
     </p>
     <img src="qr-app.png" alt="QR code application" class="qr">
     <p style="font-size:14px; color:var(--brume);">
@@ -167,21 +178,21 @@ footer{
 
 <script>
 const textes=[
-"Ce moment n’a rien à prouver. Il existe, et c’est suffisant. — Aurore des Mots",
-"Tu peux ralentir sans perdre ta place. — Aurore des Mots",
-"L’essentiel commence là où tu respires. — Aurore des Mots"
+"Tu peux t’arrêter ici. Le ciel veille encore. — Aurore des Mots",
+"Même dans la nuit la plus calme, quelque chose veille sur toi. — Aurore des Mots",
+"Ce moment n’attend rien de toi, seulement ta présence. — Aurore des Mots"
 ];
 
 const citations=[
-"L’espoir n’est pas une attente, c’est une présence. — Aurore des Mots",
-"La douceur est un courage qui ne fait pas de bruit. — Aurore des Mots",
-"Chaque pas compte, même ceux que personne ne voit. — Proverbe anonyme"
+"L’espoir brille plus fort quand tout ralentit. — Aurore des Mots",
+"La douceur est une lumière qui ne s’éteint pas. — Aurore des Mots",
+"Les étoiles existent même quand on ne les voit pas. — Proverbe anonyme"
 ];
 
 const poemes=[
-"Respire.\nMême la nuit\nporte une promesse de lumière.\n— Aurore des Mots",
-"Tu avances\nsans toujours le sentir,\net pourtant tu avances.\n— Aurore des Mots",
-"Dans le silence\nnaît souvent\nce qui dure.\n— Proverbe anonyme"
+"Sous le ciel calme\nle cœur apprend\nà respirer.\n— Aurore des Mots",
+"La nuit\nne prend rien,\nelle enveloppe.\n— Aurore des Mots",
+"Quand tout se tait,\nles étoiles parlent.\n— Proverbe anonyme"
 ];
 
 function alea(tab){
